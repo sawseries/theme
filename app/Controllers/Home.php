@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('page6');
+        return view('page8');
     }
 
     public function all(){
