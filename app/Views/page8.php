@@ -14,6 +14,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+    html {
+   min-height: 100%;
+}
+body{
+
+    font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
 
 @font-face {
   font-family: PSU-Stidti-Regular;
@@ -51,9 +60,6 @@
   font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
 }
 
-body {
-  font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
-}
 
 .navbar {
     background-color:#0c4678;
@@ -352,7 +358,25 @@ body {
   animation: fadeIn 5s;
 }
 
+.prospective{
+    min-height:800px;
+    background-image:url(https://lh3.googleusercontent.com/p/AF1QipPCR1ErTMt8YN7ts--OOpaw1E5Uns3vtsbe1915=s680-w680-h510);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
 
+.prospective2{
+    background-image:url(https://www.psu.ac.th/trang/wp-content/uploads/banner011222.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+    width: 100vw;
+    height:100vw;
+}
 
 </style>
 <script>
@@ -440,7 +464,7 @@ body {
 </div>
    
 <div class="container">
-  <div class="row">
+  <div class="row" style="background-color:white;">
 <center>
 <div class="fade-in-text">
   <img src="./image/img2.png" width="90%" style="text-align:center;" />
@@ -467,11 +491,26 @@ body {
 
 
 </div>
-<div class="container-fluid" style="min-height:250px;">
-<center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
+<div class="prospective2">
+    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
+        <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
+    
+    </div>
+    <div class="prospective" style="">
 
-
-
+        <div class="row" style="height:240px;background-color:#2c4988;opacity:0.7;">
+            <center><span class="herder-title" style="color:white;">PROSPECTIVE STUDENTS</span></center>
+        </div>
+        <div class="container">
+            <div class="row" style="height:200px;background-color:transparent;opacity:0.9;">
+            <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
+    <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
+    </div>
+    
 </div>
 
 <!--#2c4988 -->
