@@ -10,8 +10,39 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
-  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+
+<script>
+
+$(document).ready(function () {
+  alert("test");
+});
+
+    $(window).scroll(function(){
+    
+            if($(this).scrollTop() > 100){
+                $('.navbar').addClass('sticky')
+            } else{
+                $('.navbar').removeClass('sticky')
+            }
+        });
+
+       
+
+      /*  window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+        }
+  }
+}*/
+
+      
+</script>
+
 
 <style>
     html {
@@ -470,37 +501,7 @@ body{
 
 
 </style>
-<script>
-    $(window).scroll(function(){
-            if($(this).scrollTop() > 100){
-                $('.navbar').addClass('sticky')
-            } else{
-                $('.navbar').removeClass('sticky')
-            }
-        });
 
-        function FndDropdown(id){
-          alert(id);
-          $("."+id "+ul").addClass('test')
-          //$("#"+id).slideToggle();
-          //document.getElementById(id).classList.toggle("show");
-        }
-
-        window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-        var myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-        }
-  }
-}
-
-        $( document ).ready(function() {
-          //$("#clickme").on( "click", function() {
-            
-         //});
-        });
-</script>
 </head>
 <body>
 <div class="navbar">
