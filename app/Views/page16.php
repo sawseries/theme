@@ -1,5 +1,9 @@
 ﻿<html>
-<head>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/56901/jonny-slice-image-gsap-jquery-plugin.js"></script>
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,45 +18,109 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
 
-<script>
 
-$(document).ready(function () {
-  alert("test");
-});
 
-    $(window).scroll(function(){
-    
-            if($(this).scrollTop() > 100){
-                $('.navbar').addClass('sticky')
-            } else{
-                $('.navbar').removeClass('sticky')
-            }
-        });
 
-       
-
-      /*  window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-        var myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-        }
-  }
-}*/
-
-      
-</script>
-
+</head>
 
 <style>
-    html {
-   min-height: 100%;
-}
-body{
 
-    font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
+body {
+ 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;  
+  background-attachment: fixed;
+  height: 300vh;
+  padding:0;
+
+  font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
     width: 100vw;
     height: 100vh;
+
+}
+
+
+body1 {
+  background-image: url("https://www.u-review.in.th/uploads/contents/20160818153443EhtnPNG.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;  
+  background-attachment: fixed;
+  height: 300vh;
+  padding:0;
+
+  font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.cover {
+  background-color: aqua;
+  height: 50vh;
+  margin-top: 90vh;
+  
+ 
+}
+
+
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner {
+  height: 600px;
+  background: green;
+}
+.bg-aquamarine {
+  background: white;
+  height: 600px;
+}
+.bg-bisque {
+  background: bisque;
+  height: 600px;
+}
+.bg-blueviolet {
+  background: blueviolet;
+  height: 600px;
+}
+canvas {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.canvas-container {
+  width: 100%;
+  height: 100vh;
+}
+#bottomSection {
+  margin-top: -100vh;
+}
+
+.tran{
+  background:transparent;
+  height: 600px;
+}
+
+
+.tran2{
+  background-image: url("https://prospernet.ias.unu.edu/wp-content/uploads/2021/11/Prince-Songkla-University-pic-3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;  
+  background-attachment: fixed;
+  height: 300vh;
+  padding:0;
+}
+
+</style>
+<style>
+
+
+html {
+   min-height: 100%;
 }
 
 @font-face {
@@ -479,30 +547,39 @@ body{
   animation: fadeIn 5s;
 }
 
-.prospective{
-    min-height:800px;
-    background-image:url(https://lh3.googleusercontent.com/p/AF1QipPCR1ErTMt8YN7ts--OOpaw1E5Uns3vtsbe1915=s680-w680-h510);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-}
 
-.prospective2{
-    background-image:url(https://www.psu.ac.th/trang/wp-content/uploads/banner011222.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
- 
-    width: 100vw;
-    height:100vw;
-}
 
 
 </style>
+<script>
 
-</head>
+$(document).ready(function () {
+  alert("test");
+});
+
+    $(window).scroll(function(){
+    
+            if($(this).scrollTop() > 100){
+                $('.navbar').addClass('sticky')
+            } else{
+                $('.navbar').removeClass('sticky')
+            }
+        });
+
+       
+
+      /*  window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+        }
+  }
+}*/
+
+      
+</script>
+
 <body>
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
@@ -519,7 +596,7 @@ body{
       </ul>
 
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-links" style="float:left;background-color:red;">  
+      <ul class="navbar-links" style="float:left;">  
         <li class="navbar-dropdown">
           <label for="menu1" class="lbmenu"><span>เกี่ยวกับเรา</span></label> 
           <input id="menu1" type="checkbox" name="menu" hidden>
@@ -571,56 +648,41 @@ body{
       </ul>
     </div>
 </div>
-   
-<div class="container">
-  <div class="row" style="background-color:white;">
-<center>
-<div class="fade-in-text">
-  <img src="./image/img2.png" width="90%" style="text-align:center;" />
-</div>
-</center>
 
-<br><br><br><br> 
-   
-  <div class="fade-in-text">
-    <p>Fade-in Text</p>
-  </div>
-   
-   <h2 class="link"><a>new blog</a></h2>
-    <h2 class="link"><a>sweet blog</a></h2>
-    <h2 class="link"><a>sweeter blog</a></h2>    
-  </div>
-</div>
+<section class="banner">banner</section>
+
+
+<section class="tran">(covering up so you can see the effect)</section>
+
+
+<section class="bg-aquamarine" id="image-ani-pin" >
+
+<img src="./image/img3.png">
+
+</section>
+
+<section class="bg-aquamarine" id="image-ani-pin" >next section to cover up
+</section>
+
+
+<section class="tran2">
+  (covering up so you can see the effect)sss
+</section>
+
+
+<section class="tran">
+  (covering up so you can see the effect)
+</section>
+
+<section class="bg-blueviolet">next section</section>
 
 
 <div class="container-fluid" style="min-height:250px;">
     <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    
-
-
+  
 
 </div>
-<div class="prospective2">
-    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
-        <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    
-    </div>
-    <div class="prospective" style="">
 
-        <div class="row" style="height:240px;background-color:#2c4988;opacity:0.7;">
-            <center><span class="herder-title" style="color:white;">PROSPECTIVE STUDENTS</span></center>
-        </div>
-        <div class="container">
-            <div class="row" style="height:200px;background-color:transparent;opacity:0.9;">
-            <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
-    <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    </div>
-    
-</div>
 
 <!--#2c4988 -->
     <div class="container-fluid top-footer">
@@ -664,4 +726,6 @@ body{
     </div>
 
 
+
+</body>
 </html>

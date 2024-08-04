@@ -14,34 +14,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
 
-<script>
 
-$(document).ready(function () {
-  alert("test");
-});
-
-    $(window).scroll(function(){
-    
-            if($(this).scrollTop() > 100){
-                $('.navbar').addClass('sticky')
-            } else{
-                $('.navbar').removeClass('sticky')
-            }
-        });
-
-       
-
-      /*  window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-        var myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-        }
-  }
-}*/
-
-      
-</script>
 
 
 <style>
@@ -479,28 +452,388 @@ body{
   animation: fadeIn 5s;
 }
 
-.prospective{
-    min-height:800px;
-    background-image:url(https://lh3.googleusercontent.com/p/AF1QipPCR1ErTMt8YN7ts--OOpaw1E5Uns3vtsbe1915=s680-w680-h510);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  /* max-width: 1000px; */
+  position: relative;
+  margin: auto;
+  height: 250px;
+  overflow: hidden;
+}
+.slideshow-container:not(.text,.numbertext) {
+  /* line-height: 170px; */
 }
 
-.prospective2{
-    background-image:url(https://www.psu.ac.th/trang/wp-content/uploads/banner011222.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
- 
-    width: 100vw;
-    height:100vw;
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+.mySlides img {
+  width:100%;
 }
 
+/* Next & previous buttons */
+#btnController {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  /* margin-top: -20px; */
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.prev, .next {
+  cursor: pointer;
+  color:orange;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 1px 1px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.1);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  z-index:20;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+#btnDot {
+  text-align:center;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 
 </style>
+
+
+
+
+<script>
+
+
+$(document).ready(function () {
+
+
+/*for(i=0;i<=3;i++){
+//alert(i);
+showSlides(i);
+}*/
+
+showSlides(1);
+});
+
+
+let prev,next,slideIndex,slides,dots;
+
+prev = document.querySelector(".prev");
+next = document.querySelector(".next");
+slides = document.getElementsByClassName("mySlides");
+dots = document.getElementsByClassName("dot");
+
+slideIndex = 0;
+
+prev.onclick = () => plusSlides(-1);
+next.onclick = () => plusSlides(1);
+dots[0].onclick = function() {plusSlides(1)};
+dots[1].addEventListener("click",plusSlides(2));
+dots[2].addEventListener("click",plusSlides(3));
+
+//showSlides(slideIndex);
+
+// next / previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+
+//alert(n);
+  //  slides[1].style.display = "block";
+
+   //alert(n);
+   //alert(slides.length);
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+
+
+
+}
+
+
+
+</script>
+
+<script>
+
+
+
+    $(window).scroll(function(){
+    
+            if($(this).scrollTop() > 100){
+                $('.navbar').addClass('sticky')
+            } else{
+                $('.navbar').removeClass('sticky')
+            }
+        });
+
+    
+      
+</script>
+
+
+<style>
+
+body {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+}
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner {
+  height: 600px;
+  background: green;
+}
+.bg-aquamarine {
+  background: aquamarine;
+}
+.bg-bisque {
+  background: bisque;
+}
+.bg-blueviolet {
+  background: blueviolet;
+}
+canvas {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.canvas-container {
+  width: 100%;
+  height: 100vh;
+}
+#bottomSection {
+  margin-top: -100vh;
+}
+
+</style>
+
+<script>
+
+/ looking for a non-scrubbing version? https://codepen.io/GreenSock/pen/QWYdgjG
+
+let frameCount = 120,
+    urls = new Array(frameCount).fill().map((o, i) => `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(i+1).toString().padStart(4, '0')}.jpg`);
+
+imageSequence({
+  urls, // Array of image URLs
+  canvas: "#image-sequence", // <canvas> object to draw images to
+  //clear: true, // only necessary if your images contain transparency
+  //onUpdate: (index, image) => console.log("drew image index", index, ", image:", image),
+  scrollTrigger: {
+    trigger: "#image-ani-pin",
+    start: "top top",   
+    end: "bottom top", // entire page
+   // pin: true,
+    //pinSpacing: false,
+    scrub: true, // important!
+  }
+});
+
+ScrollTrigger.create({
+  trigger: "#image-ani-pin",
+  start: "top top",
+  end: "+=200%",
+  pin: true,
+});
+
+
+/*
+Helper function that handles scrubbing through a sequence of images, drawing the appropriate one to the provided canvas. 
+Config object properties: 
+- urls [Array]: an Array of image URLs
+- canvas [Canvas]: the <canvas> object to draw to
+- scrollTrigger [Object]: an optional ScrollTrigger configuration object like {trigger: "#trigger", start: "top top", end: "+=1000", scrub: true, pin: true}
+- clear [Boolean]: if true, it'll clear out the canvas before drawing each frame (useful if your images contain transparency)
+- paused [Boolean]: true if you'd like the returned animation to be paused initially (this isn't necessary if you're passing in a ScrollTrigger that's scrubbed, but it is helpful if you just want a normal playback animation)
+- fps [Number]: optional frames per second - this determines the duration of the returned animation. This doesn't matter if you're using a scrubbed ScrollTrigger. Defaults to 30fps.
+- onUpdate [Function]: optional callback for when the Tween updates (probably not used very often). It'll pass two parameters: 1) the index of the image (zero-based), and 2) the Image that was drawn to the canvas
+
+Returns a Tween instance
+*/
+function imageSequence(config) {
+  let playhead = {frame: 0},
+      canvas = gsap.utils.toArray(config.canvas)[0] || console.warn("canvas not defined"),
+      ctx = canvas.getContext("2d"),
+      curFrame = -1,
+      onUpdate = config.onUpdate,
+      images,
+      updateImage = function() {
+        let frame = Math.round(playhead.frame);
+        if (frame !== curFrame) { // only draw if necessary
+          config.clear && ctx.clearRect(0, 0, canvas.width, canvas.height);
+          canvas.width = document.documentElement.clientWidth;
+          canvas.height = document.documentElement.clientHeight;
+          // ctx.drawImage(images[Math.round(playhead.frame)], 0, 0);
+          drawImageProp(
+                ctx,
+                images[Math.round(playhead.frame)],
+                0,
+                0,
+                canvas.width,
+                canvas.height
+              );
+          curFrame = frame;
+          onUpdate && onUpdate.call(this, frame, images[frame]);
+        }
+      };
+  images = config.urls.map((url, i) => {
+    let img = new Image();
+    img.src = url;
+    i || (img.onload = updateImage);
+    return img;
+  });
+  return gsap.to(playhead, {
+    frame: images.length - 1,
+    ease: "none",
+    onUpdate: updateImage,
+    duration: images.length / (config.fps || 30),
+    paused: !!config.paused,
+    scrollTrigger: config.scrollTrigger
+  });
+}
+
+/**
+       * By Ken Fyrstenberg Nilsen
+       *
+       * drawImageProp(context, image [, x, y, width, height [,offsetX, offsetY]])
+       *
+       * If image and context are only arguments rectangle will equal canvas
+       */
+      function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+        if (arguments.length === 2) {
+          x = y = 0;
+          w = ctx.canvas.width;
+          h = ctx.canvas.height;
+        }
+
+        // default offset is center
+        offsetX = typeof offsetX === "number" ? offsetX : 0.5;
+        offsetY = typeof offsetY === "number" ? offsetY : 0.5;
+
+        // keep bounds [0.0, 1.0]
+        if (offsetX < 0) offsetX = 0;
+        if (offsetY < 0) offsetY = 0;
+        if (offsetX > 1) offsetX = 1;
+        if (offsetY > 1) offsetY = 1;
+
+        var iw = img.width,
+          ih = img.height,
+          r = Math.min(w / iw, h / ih),
+          nw = iw * r, // new prop. width
+          nh = ih * r, // new prop. height
+          cx,
+          cy,
+          cw,
+          ch,
+          ar = 1;
+
+        // decide which gap to fill
+        if (nw < w) ar = w / nw;
+        if (Math.abs(ar - 1) < 1e-14 && nh < h) ar = h / nh; // updated
+        nw *= ar;
+        nh *= ar;
+
+        // calc source rectangle
+        cw = iw / (nw / w);
+        ch = ih / (nh / h);
+
+        cx = (iw - cw) * offsetX;
+        cy = (ih - ch) * offsetY;
+
+        // make sure source rectangle is valid
+        if (cx < 0) cx = 0;
+        if (cy < 0) cy = 0;
+        if (cw > iw) cw = iw;
+        if (ch > ih) ch = ih;
+
+        // fill image in dest. rectangle
+        // ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+      }
+
+</script>
 
 </head>
 <body>
@@ -519,7 +852,7 @@ body{
       </ul>
 
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-links" style="float:left;background-color:red;">  
+      <ul class="navbar-links" style="float:left;">  
         <li class="navbar-dropdown">
           <label for="menu1" class="lbmenu"><span>เกี่ยวกับเรา</span></label> 
           <input id="menu1" type="checkbox" name="menu" hidden>
@@ -572,15 +905,70 @@ body{
     </div>
 </div>
    
-<div class="container">
-  <div class="row" style="background-color:white;">
-<center>
+<div class="container-fluid" style="height:1000vh;">
+  
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="https://images.pexels.com/photos/27076936/pexels-photo-27076936/free-photo-of-trees-by-the-lake-in-a-mountain-valley.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+    <div class="text">Caption One</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="https://images.pexels.com/photos/1671479/pexels-photo-1671479.jpeg?auto=compress&cs=tinysrgb&w=400">
+    <div class="text">Caption Two</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="https://images.pexels.com/photos/23857956/pexels-photo-23857956/free-photo-of-hill-by-the-shore-during-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+    <div class="text">Caption Three</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <div id=btnController>
+    <button type="button" class="prev">&#10094;</button>
+    <button type="button" class="next">&#10095;</button>
+  </div>
+  
+  </div>
+<br>
+  <div id="btnDot">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div> 
+
+
+  <div class="containner-fluid">
+
+  <section class="banner">banner</section>
+
+<section class="bg-aquamarine parallax-video-container vh-100" id="image-ani-pin" >
+  <div class="canvas-container d-flex align-items-center justify-content-center" >
+    <canvas class="" id="image-sequence"></canvas>
+  </div>
+</section>
+
+<section class="vh-100 bg-bisque" id="bottomSection">
+  next section to cover up
+</section>
+<section class="vh-100 bg-blueviolet">next section</section>
+
+  </div>
+
+
+
+<!--<center>
 <div class="fade-in-text">
   <img src="./image/img2.png" width="90%" style="text-align:center;" />
 </div>
-</center>
+</center> -->
 
-<br><br><br><br> 
+<!--<br><br><br><br> 
    
   <div class="fade-in-text">
     <p>Fade-in Text</p>
@@ -589,7 +977,7 @@ body{
    <h2 class="link"><a>new blog</a></h2>
     <h2 class="link"><a>sweet blog</a></h2>
     <h2 class="link"><a>sweeter blog</a></h2>    
-  </div>
+  </div>-->
 </div>
 
 
@@ -600,27 +988,7 @@ body{
 
 
 </div>
-<div class="prospective2">
-    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
-        <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    
-    </div>
-    <div class="prospective" style="">
 
-        <div class="row" style="height:240px;background-color:#2c4988;opacity:0.7;">
-            <center><span class="herder-title" style="color:white;">PROSPECTIVE STUDENTS</span></center>
-        </div>
-        <div class="container">
-            <div class="row" style="height:200px;background-color:transparent;opacity:0.9;">
-            <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
-    <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    </div>
-    
-</div>
 
 <!--#2c4988 -->
     <div class="container-fluid top-footer">

@@ -1,8 +1,18 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
 <head>
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -11,14 +21,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
-
+		<link rel="stylesheet" type="text/css" href="./slicerevealer/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="./slicerevealer/css/uncover.css" />
 <script>
 
-$(document).ready(function () {
-  alert("test");
-});
 
     $(window).scroll(function(){
     
@@ -28,18 +35,6 @@ $(document).ready(function () {
                 $('.navbar').removeClass('sticky')
             }
         });
-
-       
-
-      /*  window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-        var myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains('show')) {
-        myDropdown.classList.remove('show');
-        }
-  }
-}*/
-
       
 </script>
 
@@ -479,31 +474,10 @@ body{
   animation: fadeIn 5s;
 }
 
-.prospective{
-    min-height:800px;
-    background-image:url(https://lh3.googleusercontent.com/p/AF1QipPCR1ErTMt8YN7ts--OOpaw1E5Uns3vtsbe1915=s680-w680-h510);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-}
-
-.prospective2{
-    background-image:url(https://www.psu.ac.th/trang/wp-content/uploads/banner011222.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
- 
-    width: 100vw;
-    height:100vw;
-}
-
-
 </style>
 
 </head>
-<body>
+<body class="demo-1 loading">
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
       <li class="navlogo"><img src="./image/logo2.png" height="60px" /></li>     
@@ -519,7 +493,7 @@ body{
       </ul>
 
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-links" style="float:left;background-color:red;">  
+      <ul class="navbar-links" style="float:left;">  
         <li class="navbar-dropdown">
           <label for="menu1" class="lbmenu"><span>เกี่ยวกับเรา</span></label> 
           <input id="menu1" type="checkbox" name="menu" hidden>
@@ -572,6 +546,46 @@ body{
     </div>
 </div>
    
+<div class="container-fluid">
+  <div class="row" style="background-color:white;">
+		
+		<main>
+			<div class="content content--fixed">
+
+				<a class="github" href="https://github.com/codrops/SliceRevealer" title="Find this project on GitHub">
+					<svg class="icon icon--github">
+						<use xlink:href="#icon-github"></use>
+					</svg>
+				</a>
+				<nav class="pagination">
+					<span class="pagination__item">#1</span>
+					<span class="pagination__item">#2</span>
+					<span class="pagination__item">#3</span>
+					<span class="pagination__item">#4</span>
+					<span class="pagination__item">#5</span>
+				</nav>
+			</div>
+			<div class="slides">
+				<div class="slide slide--current">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/7.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/10.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/9.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/6.jpg);"></div>
+				</div>
+			</div>
+		</main>
+    </div>
+</div>
+
 <div class="container">
   <div class="row" style="background-color:white;">
 <center>
@@ -592,38 +606,8 @@ body{
   </div>
 </div>
 
-
-<div class="container-fluid" style="min-height:250px;">
-    <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    
-
-
-
-</div>
-<div class="prospective2">
-    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
-        <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    
-    </div>
-    <div class="prospective" style="">
-
-        <div class="row" style="height:240px;background-color:#2c4988;opacity:0.7;">
-            <center><span class="herder-title" style="color:white;">PROSPECTIVE STUDENTS</span></center>
-        </div>
-        <div class="container">
-            <div class="row" style="height:200px;background-color:transparent;opacity:0.9;">
-            <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid" style="min-height:250px;background-color:transparent;">
-    <center><span class="herder-title">PROSPECTIVE STUDENTS</span></center>
-    </div>
-    
-</div>
-
 <!--#2c4988 -->
-    <div class="container-fluid top-footer">
+<div class="container-fluid top-footer">
       <!-- footer item 1 -->
       <div class="footer-item">
         <h2 class="footer-title">ADDRESS</h2>
@@ -662,6 +646,10 @@ body{
       <div class="copyright">copyright © 2021 - Present • <b>DOWNTOWN TECH LIVER</b></div>
       <a class="designer" href="#">Thierry M</a>
     </div>
-
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="./slicerevealer/js/imagesloaded.pkgd.min.js"></script>
+		<script src="./slicerevealer/js/anime.min.js"></script>
+		<script src="./slicerevealer/js/uncover.js"></script>
+		<script src="./slicerevealer/js/demo1.js"></script>
+	</body>
 </html>
