@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <script>
     $(window).scroll(function(){
     
@@ -119,7 +121,6 @@ body{
 *{
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
 }
 
@@ -134,8 +135,9 @@ body{
     
     box-shadow: 5px 0px 5px #ccc;
     width:100vm;  
-    padding: 0px 50px;
-    border:1px solid gray;
+    padding: 0px 40px;
+    border:1px solid #CCD1D1;
+    background-color:white;
 }
 
 
@@ -188,11 +190,11 @@ body{
   display: block;
   text-decoration: none;
   color: #FFF;
-  padding: 20px 20px;
+  padding: 15px 20px;
   font-weight: 700;
   transition: 0.4s all;
   background-color:#0c4678;
-  margin:10px;
+  margin:5px;
 }
 
 .navbar-links{
@@ -280,9 +282,9 @@ background-color:#e9eef4;
 }
 
     .navbar-links li.navbar-dropdown .lbmenu span{
-      padding: 20px 25px;
-      color : #000;
-      font-variant : small-caps;
+      padding: 15px 20px;
+      color :#424949;
+      
       cursor : pointer;
       display: block;
     }
@@ -314,7 +316,7 @@ background-color:#e9eef4;
   }
   
 .footer-title {
-  font-weight: 500;
+ 
   font-size: 16pt;
   padding: 1rem 0;
   color:white;
@@ -322,17 +324,17 @@ background-color:#e9eef4;
   -webkit-background-clip: text;
   font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
 }
-.footer-items h3 {
+.footer-items{
   cursor: pointer;
-  font-weight: 300;
-  font-size:14pt;
-  padding: 0.1rem 0;
+
+  font-size:10pt;
+  padding: 0.2rem 0;
   font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
 }
-.footer-items h3:hover {
+.footer-items :hover {
   text-decoration: underline;
 }
-.footer-items h3:last-child {
+.footer-items :last-child {
   padding-bottom: 2rem;
 }
 
@@ -342,11 +344,30 @@ background-color:#e9eef4;
   align-items: center;
   justify-content: center;
   background-color: var(--third-color);
+  padding:0.4em;
 }
 
    
 @media (max-width: 920px) {
 
+  .box{
+
+  min-height:400px;
+
+}
+
+.flex-container{
+  padding:0;
+}
+
+.flex-container > div{
+ margin:0;
+}
+
+.flex-container > div > img{
+ width:90%;
+  
+}
 
   .sticky{
     position:relative;
@@ -608,7 +629,39 @@ background-color:#e9eef4;
   to {opacity: 1}
 }
 
+/*---------*/
+.new-cols{
+  background-color:transparent;border:0px solid gray;padding:0.5em;
+}
 
+.box{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius:5px;
+  min-height:350px;
+  background-color:white;
+  padding:1em;
+  position:relative;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > div {
+  margin: 10px;
+  padding:0px;
+  font-size:10px;
+  
+}
 
 </style>
 
@@ -616,7 +669,7 @@ background-color:#e9eef4;
 <body> 
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
-      <li class="navlogo"><img src="./image/logo.png" height="60px" /></li>     
+      <li class="navlogo"><img src="https://www.psu.ac.th/img/logos/psu_en.png" height="50px" /></li>     
       </ul>
 
       <ul class="navbar-toggle" style="float:right;">
@@ -683,97 +736,182 @@ background-color:#e9eef4;
 		
 	<!--slide-->
   <div id="caroussel">
-  <div class="img-caroussel active" data-img="1" style="background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-    <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/montagne-enneigee-sous-les-etoiles-phIFdC6lA4E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></a>
-    </div>   
-  </div>
+      <div class="img-caroussel active" data-img="1" style="background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/montagne-enneigee-sous-les-etoiles-phIFdC6lA4E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></a>
+      </div>   
+      </div>
 
-  <div class="img-caroussel" data-img="2" style="background-image: url(https://images.unsplash.com/photo-1514897575457-c4db467cf78e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-  <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/croissant-de-lune-au-dessus-de-la-montagne-U-Kty6HxcQc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  </div>
-  </div>
-  <div class="img-caroussel" data-img="3" style="background-image: url(https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-  <div class="credit">Photo de <a href="https://unsplash.com/fr/@twinckels?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tom Winckels</a> sur <a href="https://unsplash.com/fr/photos/alberi-verdi-sulla-scogliera-I7oLRdM9YIw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  </div>
-  </div>
-  <div class="img-caroussel" data-img="4" style="background-image: url(https://images.unsplash.com/photo-1532079890557-10d83624b9de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-  <div class="credit">Photo de <a href="https://unsplash.com/fr/@appolinary_kalashnikova?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Appolinary Kalashnikova</a> sur <a href="https://unsplash.com/fr/photos/champs-de-fleurs-pendant-la-journee-2onvM-fFMmE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  </div>
-  </div>
+      <div class="img-caroussel" data-img="2" style="background-image: url(https://images.unsplash.com/photo-1514897575457-c4db467cf78e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/croissant-de-lune-au-dessus-de-la-montagne-U-Kty6HxcQc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      </div>
+      </div>
+      <div class="img-caroussel" data-img="3" style="background-image: url(https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <div class="credit">Photo de <a href="https://unsplash.com/fr/@twinckels?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tom Winckels</a> sur <a href="https://unsplash.com/fr/photos/alberi-verdi-sulla-scogliera-I7oLRdM9YIw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      </div>
+      </div>
+      <div class="img-caroussel" data-img="4" style="background-image: url(https://images.unsplash.com/photo-1532079890557-10d83624b9de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <div class="credit">Photo de <a href="https://unsplash.com/fr/@appolinary_kalashnikova?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Appolinary Kalashnikova</a> sur <a href="https://unsplash.com/fr/photos/champs-de-fleurs-pendant-la-journee-2onvM-fFMmE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      </div>
+      </div>
 
-<div class="arrows">
+    <div class="arrows">
     <i class="farrows fa-solid fa-arrow-left" id="previous"></i>
     <i class="farrows fa-solid fa-arrow-right" id="next"></i>
-</div>
+    </div>
 
-<div class="slider-position">
+    <div class="slider-position">
     <span class="round active" data-img="1"></span>
     <span class="round" data-img="2"></span>
     <span class="round" data-img="3"></span>
     <span class="round" data-img="4"></span>
-</div>
-
-
-</div>
-    
-
-
     </div>
 </div>
 
-<div class="container">
+<!--slide-->
+    </div>
+    
+    <div class="row" style="background-color:#e9eef4;min-height:350px;">
+
+    <!--<img src="./image/img3.png" width="100%" style="text-align:center;" />-->
+
+    </div>
+
+    <div class="row" style="background-color:white;">
+    <center>
+    <div class="fade-in-text">
+      <img src="./image/pro1.png" width="100%" style="text-align:center;" />
+    </div>
+    </center>
+    </div>
+
+
+    <div class="row" style="background-color:#f4f4f2;min-height:300px;padding:3em;">
+    
+    <h2>ข่าวสาร</h2> 
+    <span style="margin:10px;color:#959596;"><b>ข่าวเด่น</b></span>  <span style="margin:10px;color:#959596;"><b>ข่าววิจัยและนวัตกรรม</b></span>
+    
+    <br> <br> 
+
+    <div class="new-cols col col-md-3 col-sm-12" style="">
+    <!--box1-->  
+    <div class="box">
+        <div id="pic1">
+          <div><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid" width="100%"></div>
+          <div style="padding:0.5em;">
+          ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ผกก.ปฏิบัติการพิเศษ ภ.จว.สงขลา
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--box2-->
+    <div class="new-cols col col-md-3 col-sm-12" style="">
+    <div class="box">
+        <?php for($i=1;$i<=3;$i++){ ?>
+
+          <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
+  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" width="100%" class="img-fluid"></div>
+  <div style="width:40%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า แล..</div>
+</div>
+       
+        <?php } ?>
+      </div>
+    </div>
+    <!--box3-->
+    <div class="new-cols col col-md-3 col-sm-12" style="">
+    <div class="box">
+    <?php for($i=1;$i<=3;$i++){ ?>
+
+
+<div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
+  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" width="100%" class="img-fluid"></div>
+  <div style="width:40%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า แล..</div>
+</div>
+
+
+
+<?php } ?>
+      </div>
+    </div>
+    <!--box4-->
+    <div class="new-cols col col-md-3 col-sm-12" style="">
+    <div class="box">
+    <?php for($i=1;$i<=6;$i++){ ?>
+
+    <div id="pic2" style="width:100%;">
+      <div style="font-size:10px;">
+      ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ สาข...
+      </div>
+    </div>
+    <hr>
+<?php } ?>
+      </div>
+    </div>
+    
+    <!--<center>
+    <div class="fade-in-text">
+      <img src="./image/activity1.png" width="90%" style="text-align:center;" />
+    </div>
+    </center>-->
+   
+    </div>
+</div>
+
+<!--<div class="container">
   <div class="row" style="background-color:white;">
 
 <br><br><br><br> 
    
   <div class="fade-in-text">
     <p>Fade-in Text</p>
-  </div>
-   
-   <h2 class="link"><a>new blog</a></h2>
-    <h2 class="link"><a>sweet blog</a></h2>
-    <h2 class="link"><a>sweeter blog</a></h2>    
-  </div>
-</div>
+  </div>-->
+  <!--endcon -->
+
+
+
 
 <!--#2c4988 -->
 <div class="container-fluid top-footer">
       <!-- footer item 1 -->
       <div class="footer-item">
-        <h2 class="footer-title">ADDRESS</h2>
+        <h2 class="footer-title">วัฒนธรรมองค์กร</h2>
         <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
+        ประโยชน์ของเพื่อนมนุษย์เป็นกิจที่หนึ่ง
+        <br>(Our Soul is for the Benefit of Mankind)
         </div>
       </div>
       <!-- footer item 2 -->
       <div class="footer-item">
-        <h2 class="footer-title">SERVICES</h2>
+        <h2 class="footer-title">วิทยาเขต</h2>
         <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-
+          วิทยาเขตหาดใหญ่
+          <br>วิทยาเขตปัตตานี
+          <br>วิทยาเขตภูเก็ต
+          <br>วิทยาเขตสุราษฎร์ธานี
+          <br>วิทยาเขตตรัง
         </div>
       </div>
       <!-- footer item 3 -->
       <div class="footer-item">
-        <h2 class="footer-title">SUPPLIERS</h2>
+        <h2 class="footer-title">ข้อมูลทั่วไป</h2>
         <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
+          วิสัยทัศน์ / พันธกิจ / เป้าประสงค์
+          <br>ตรามหาวิทยาลัย
+          <br>ประวัติพระราชบิดา
+          <br>ประวัติมหาวิทยาลัย
         </div>
       </div>
       <!-- footer item 4 -->
       <div class="footer-item">
-        <h2 class="footer-title">INVESTMENT</h2>
+        <h2 class="footer-title">ติดต่อ</h2>
         <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
+           มหาวิทยาลัยสงขลานครินทร์
+          <br>15 ถ.กาญจนวณิชย์ อ.หาดใหญ่ จ.สงขลา 90110
+    
         </div>
       </div>
     </div>
     <div class="container-fluid end-footer" style="background-color:#00305b;color:white;">
-      <div class="copyright">copyright © 2021 - Present • <b>DOWNTOWN TECH LIVER</b></div>
+      <div class="copyright">© 2021 Copyright: Prince of Songkla University, All right reserved</b></div>
       <a class="designer" href="#">Thierry M</a>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
