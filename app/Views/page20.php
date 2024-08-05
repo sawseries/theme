@@ -21,210 +21,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="./slicerevealer/css/base.css" />
-		<link rel="stylesheet" type="text/css" href="./slicerevealer/css/uncover.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
-
-function doSomething(){
-    alert("1");
-}
-
-$(document).ready(function () {
-
-
-
-    const uncoverOpts = [
-        {
-            // total number of slices.
-            slicesTotal: 10,
-            // slices color.
-            slicesColor: '#FFF',
-            // 'vertical' || 'horizontal'.
-            orientation: 'vertical',
-            // 'bottom' || 'top' for vertical orientation and 'right' || 'left' for horizontal orientation.
-            slicesOrigin: {show: 'bottom', hide: 'bottom'}
-        },
-        {
-            slicesTotal: 7, 
-            slicesColor: '#FFF', 
-            orientation: 'horizontal', 
-            slicesOrigin:  {show: 'right', hide: 'right'}
-        },
-        {
-            slicesTotal: 9,
-            slicesColor: '#FFF',
-            orientation: 'vertical',
-            slicesOrigin:  {show: 'bottom', hide: 'bottom'}
-        },
-        {
-            slicesTotal: 5,
-            slicesColor: '#FFF',
-            orientation: 'horizontal',
-            slicesOrigin:  {show: 'left', hide: 'left'}
-        },
-        {
-            slicesTotal: 6,
-            slicesColor: '#FFF',
-            orientation: 'vertical',
-            slicesOrigin:  {show: 'bottom', hide: 'bottom'}
-        }
-    ];
-
-    class Slideshow {
-        constructor(el) {
-          
-            this.DOM = {el: el};
-            this.DOM.slides = Array.from(this.DOM.el.querySelectorAll('.slide'));
-            this.slidesTotal = this.DOM.slides.length;
-            this.current = 0;
-            this.uncoverItems = [];
-            this.DOM.slides.forEach((slide,pos) => this.uncoverItems.push(new Uncover(slide.querySelector('.slide__img'), uncoverOpts[pos])));
-            this.init();
-        }
-        init() {
-            this.isAnimating = true;
-            this.DOM.slides[this.current].classList.add('slide--current');
-            this.uncoverItems[this.current].show(true, {
-                image: {
-                    duration: 800,
-                    delay: 350,
-                    easing: 'easeOutCubic',
-                    scale: [1.3,1]
-                }
-            }).then(() => this.isAnimating = false);
-        }
-        navigate(pos) {
-          // alert("navagae :"+pos)
-            //if ( this.isAnimating || this.current === pos || pos < 0 || pos > this.slidesTotal - 1 ) return;
-            //this.isAnimating = true;
-           
-            const pagination = document.querySelector('.pagination');
-            const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
-
-            this.uncoverItems[this.current].hide(true).then(() => {
-                this.DOM.slides[this.current].classList.remove('slide--current');
-                this.current = pos;
-                
-
-                const newItem = this.uncoverItems[this.current];
-                newItem.hide();
-                this.DOM.slides[this.current].classList.add('slide--current');
-              
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                triggers[pos].classList.add('pagination__item--current');
-              
-                newItem.show(true, {
-                    image: {
-                        duration: 100,
-                        delay: 200,
-                        easing: 'easeOutCubic',
-                        scale: [1.3,2]
-                    }
-                }).then(() => this.isAnimating = false);
-            });
-        }
-    }
-    
-    // Preload all the images in the page..
-	imagesLoaded(document.querySelectorAll('.slide__img'), {background: true}, () => {
-        document.body.classList.remove('loading');
-        
-        const slideshow = new Slideshow(document.querySelector('.slides'));
-        const pagination = document.querySelector('.pagination');
-        const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
-        
-        triggers.forEach((trigger,pos) => {
-
-        
-            if ( pos === 0 ) {
-                trigger.classList.add('pagination__item--current');
-            }
-            trigger.addEventListener('click', () => {
-              //alert("cl "+pos);
-                if ( slideshow.isAnimating ) return;
-                slideshow.navigate(pos);
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                trigger.classList.add('pagination__item--current');
-            })
-           
-        });
-    
-        document.addEventListener('keydown', (ev) => {
-            if ( slideshow.isAnimating ) return;
-            const keyCode = ev.keyCode || ev.which;
-            //alert(keyCode);
-            let newpos;
-            if ( keyCode === 37 ) {
-                newpos = slideshow.current > 0 ? slideshow.current-1 : slideshow.slidesTotal-1;
-                //alert(newpos);
-                slideshow.navigate(newpos);
-            }
-            else if ( keyCode === 39 ) {
-                newpos = slideshow.current < slideshow.slidesTotal-1 ? slideshow.current+1 : 0;
-                //alert(newpos);
-                slideshow.navigate(newpos);
-            }
-            else return;
-            pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-            triggers[newpos].classList.add('pagination__item--current');
-        });
-    });
-
-
-
-
-
-/*var i=0;
-setInterval(function() {
-  alertFunc();
-
-}, 2000);
-
-function alertFunc() {
-  //$("#item_"+i).click();
- //alert(document.querySelector('.slides'));
-//alert(i);
- const slideshow = new Slideshow(document.querySelector('.slides'));
- //slideshow.navigate(i);
-
- if ( slideshow.isAnimating ) return;
-                slideshow.navigate(i);
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                trigger.classList.add('pagination__item--current');
-
-  i=i+1;  
-  if(i>5){
-    i=0;
-  }
-}*/
-
-var i=1;
-setInterval(function() {
-  alertFunc();
-}, 10000);
-
-function alertFunc() {
-
- const slideshow = new Slideshow(document.querySelector('.slides'));
- slideshow.navigate(i);
-
- i=i+1;  
-  if(i>4){
-    i=0;
-  }
- /*if ( slideshow.isAnimating ) return;
-                slideshow.navigate(i);
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                trigger.classList.add('pagination__item--current');*/
-
-
-}
-
-});
-
-
-
-
     $(window).scroll(function(){
     
             if($(this).scrollTop() > 100){
@@ -233,6 +33,45 @@ function alertFunc() {
                 $('.navbar').removeClass('sticky')
             }
         });
+
+
+        $(document).ready(function () {
+
+
+const img_slider_elements=document.querySelectorAll(".img-caroussel");
+const arrows_elts= document.querySelectorAll(".arrows i")
+const round_elts=document.querySelectorAll(".round");
+
+const slide = Array.from(document.querySelectorAll(".img-caroussel"));
+const dot = Array.from(document.querySelectorAll(".round"));
+
+var i=0;
+setInterval(function() {
+
+    img_slider_elements.forEach((img)=>{
+    img.classList.remove("active");
+    img.classList.remove("fade");
+    });
+
+    round_elts.forEach((round_elt)=>{
+    round_elt.classList.remove("active");
+    });
+
+    slide[i].classList.add('active');
+    slide[i].classList.add('fade');
+
+    dot[i].classList.add('active');
+    i++; 
+
+    if(i==4){
+     i=0;
+    }
+
+}, 3000);
+
+
+});
+
       
 </script>
 
@@ -284,12 +123,19 @@ body{
   font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
 }
 
+/*navbar*/
+
+
+.arrow{
+  float:right;width:20px;text-align:right;
+}
 
 .navbar {
-    background-color:#0c4678;
+    
     box-shadow: 5px 0px 5px #ccc;
     width:100vm;  
-    padding: 0px 70px;
+    padding: 0px 50px;
+    border:1px solid gray;
 }
 
 
@@ -302,17 +148,18 @@ body{
 
 .navbar-toggle button{
     background-color:transparent;
-    padding:0em;
-    font-size:15pt;
-    display:block;
-    color:white;
-    border:0px solid transparent;
+    padding:0.2rem;
+    font-size:18pt;
+    color:black;
+    border:0px solid;
+
 }
 
 .navbar-logo{
     list-style-type: none;
     display: flex;
     width:auto;
+    margin:10px;
 }
 
 .navbar-logo li a{
@@ -328,7 +175,7 @@ body{
 .navbar-links {
   list-style-type: none;
   display: flex;
-  width:auto;
+  width:100vh;
 }
 
 .navbar-login{
@@ -344,13 +191,19 @@ body{
   padding: 20px 20px;
   font-weight: 700;
   transition: 0.4s all;
+  background-color:#0c4678;
+  margin:10px;
+}
+
+.navbar-links{
+  margin:10px;
 }
 
 .navbar-links li a {
   display: block;
   text-decoration: none;
-  color: #FFF;
-  padding: 20px 20px;
+  color:#000;
+  padding: 10px 10px;
   font-weight: 700;
   transition: 0.4s all;
 }
@@ -363,7 +216,7 @@ body{
   display: block;
   text-decoration: none;
   color: #444;
-  padding: 20px 20px;
+  padding: 10px 10px;
   font-weight: 700;
   transition: 0.4s all;
 }
@@ -379,10 +232,10 @@ body{
   /*visibility: hidden;*/
   opacity: 0;
   position: absolute;
-  padding: 20px 0;
+  padding:0;
   top:100%;
   left: 0;
-  width: 250px;
+  width:350px;
   background-color: #fff;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
   border-bottom-left-radius: 3px;
@@ -422,13 +275,13 @@ body{
 }
 
 .navbar-links li.navbar-dropdown .lbmenu span:hover{
-      color: #4EACF8;
-  background-color:#e9eef4;
-    }
+color: #4EACF8;
+background-color:#e9eef4;
+}
 
     .navbar-links li.navbar-dropdown .lbmenu span{
       padding: 20px 25px;
-      color : white;
+      color : #000;
       font-variant : small-caps;
       cursor : pointer;
       display: block;
@@ -438,6 +291,7 @@ body{
       list-style-type:none;
       display:block;
       padding:1.5rem;
+      border-bottom:1px solid gray;
     }
 
     .navbar-links .navbar-dropdown .dropdown li:hover{
@@ -492,6 +346,13 @@ body{
 
    
 @media (max-width: 920px) {
+
+
+  .sticky{
+    position:relative;
+    opacity:1;
+  }
+
     .navbar-login{
         display:none;
     }
@@ -502,15 +363,32 @@ body{
 
     .navbar {
     padding: 0px;
+    margin:0;
+    left:0;
     }
 
-    .navbar-links{
-        width: 100vh;
+  .navbar-links{
+        width: 100%;
         transition: all 0.3s ease-in;
         top:0;
         display:block;
+        position:relative;
+        padding: 0px;
+    margin:0;
+    left:0;
     }
 
+    .navbar-links li.navbar-dropdown .lbmenu span:hover{
+    color: #4EACF8;
+    background-color:#e9eef4;
+  }
+
+
+    .navbar-links .navbar-dropdown .dropdown li:hover{
+      color: #4EACF8;
+      background-color:#e9eef4;
+      position:relative;
+    }
 
     .navbar-links li.navbar-dropdown:hover .dropdown {
       visibility: hidden;
@@ -519,29 +397,14 @@ body{
       display:none;  
     }
 
-   /* .navbar-links li.navbar-dropdown:hover .dropdown {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0px);
-    display:block;
-    position:relative;
-    }*/
-
- 
-
-    .navbar-links li.navbar-dropdown .lbmenu span{
-      padding:2em;
-    
-     color : white;
+   .navbar-links li.navbar-dropdown .lbmenu span{
+    padding:2em;
+    color : #000;
     font-variant : small-caps;
     cursor : pointer;
-    display: block;
-    width:100vh;
+    width:95vw;
+     display: block;
     }
-
-
- 
-  
 
     .navbar-links li.navbar-dropdown .dropdown {
     visibility: hidden;
@@ -555,14 +418,16 @@ body{
     border-bottom-right-radius: 3px;
     z-index: 111;
     transition: 0.4s all;
-    width:100vh;
+    width:100%;
    }
 
-   .dropdown{
+  .dropdown{
     display:none;
     transition: transform .6s cubic-bezier(1,-0.72, 0, 1), opacity .6s ease-in-out;
-	transform: translateY(-10rem);
-    }
+	  transform: translateY(-10rem);
+  }
+
+
 
     #menu1:checked +ul{
       visibility: visible;
@@ -622,13 +487,136 @@ body{
   animation: fadeIn 5s;
 }
 
+
+/*slide*/
+
+#caroussel{
+    width: 90%;
+    height: 500px;
+    margin: auto;
+    position: relative;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+
+.img-caroussel{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: inherit;
+    transition: 0.6s ease;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    border-radius: 10px;
+ 
+}
+
+.img-caroussel :hover{
+
+    transition-timing-function: linear;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+.img-caroussel.active{
+    opacity: 1;
+   
+}
+
+.farrows{
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.farrows:hover{
+    cursor: pointer;
+}
+
+
+.fa-arrow-left{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fa-arrow-right{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-position .round{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: white solid 1px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.5s;
+}
+
+
+.slider-position .round.active{
+    background-color: white;
+}
+
+
+.slider-position .round:hover{
+    background-color: white;
+}
+
+.slider-position .round:last-child{
+    margin: 0;
+}
+
+
+.slider-position{
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.credit{
+    background-color: rgba(228, 214, 214, 0.7) ;
+    padding: 10px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 200;
+    border-bottom-right-radius: 10px ;
+}
+
+
+.face{
+    animation-name: fadeInOut, moveLeft300px, bounce;
+    animation-duration: 2.5s, 5s, 1s;
+    animation-iteration-count: 2, 1, 5;
+}
+
+
+@keyframes fade {
+  from {opacity:0.2} 
+  to {opacity: 1}
+}
+
+
+
 </style>
 
 </head>
-<body class="demo-1 loading">
+<body> 
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
-      <li class="navlogo"><img src="./image/logo2.png" height="60px" /></li>     
+      <li class="navlogo"><img src="./image/logo.png" height="60px" /></li>     
       </ul>
 
       <ul class="navbar-toggle" style="float:right;">
@@ -640,11 +628,12 @@ body{
         </li>
       </ul>
 
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="collapse navbar-collapse"  id="collapsibleNavbar">
       <ul class="navbar-links" style="float:left;">  
         <li class="navbar-dropdown">
-          <label for="menu1" class="lbmenu"><span>เกี่ยวกับเรา</span></label> 
-          <input id="menu1" type="checkbox" name="menu" hidden>
+          <label for="menu1" class="lbmenu"><span>เกี่ยวกับเรา <i class="arrow fa fa-angle-down" aria-hidden="true"></i></span>  </label>
+          
+          <input id="menu1" type="checkbox" name="menu" hidden> 
           <ul class="dropdown"> 
             <li href="#">Tomato Soup</a>
             <li href="#">Veg Manchow Soup</a>
@@ -652,7 +641,7 @@ body{
           </ul>
         </li>
         <li class="navbar-dropdown">
-          <label for="menu2" class="lbmenu"><span>หลักสูตร</span></label> 
+          <label for="menu2" class="lbmenu"><span>หลักสูตร <i class="arrow fa fa-angle-down" aria-hidden="true"></i></span></label> 
           <input id="menu2" type="checkbox" name="menu" hidden>
           <ul class="dropdown"> 
             <li href="#">Tomato Soup</a>
@@ -661,7 +650,7 @@ body{
           </ul>
         </li>
         <li class="navbar-dropdown">
-          <label for="menu3" class="lbmenu"><span>ติดต่อ</span></label> 
+          <label for="menu3" class="lbmenu"><span>ติดต่อ <i class="arrow fa fa-angle-down" aria-hidden="true"></i></span></label> 
           <input id="menu3" type="checkbox" name="menu" hidden>
           <ul class="dropdown"> 
             <li href="#">Tomato Soup</a>
@@ -670,7 +659,7 @@ body{
           </ul>
         </li>
         <li class="navbar-dropdown">
-          <label for="menu4" class="lbmenu"><span>ผู้เกี่ยวข้อง</span></label> 
+          <label for="menu4" class="lbmenu"><span>ผู้เกี่ยวข้อง <i class="arrow fa fa-angle-down" aria-hidden="true"></i></span></label> 
           <input id="menu4" type="checkbox" name="menu" hidden>
           <ul class="dropdown"> 
             <li href="#">Tomato Soup</a>
@@ -680,12 +669,7 @@ body{
         </li>
         <li class="navbar-dropdown">
           <label for="menu5" class="lbmenu"><span>Chinese</span></label> 
-          <input id="menu5" type="checkbox" name="menu" hidden>
-          <ul class="dropdown"> 
-            <li href="#">Tomato Soup</a>
-            <li href="#">Veg Manchow Soup</a>
-            <li href="#">Veg Hot Soup</a>
-          </ul>
+         
         </li>
       </ul>
       <ul class="navbar-login" style="float:right;">
@@ -697,36 +681,41 @@ body{
 <div class="container-fluid">
   <div class="row" style="background-color:white;">
 		
-		<main style="background-color:#FFF;">
-			<div class="content content--fixed">
+	<!--slide-->
+  <div id="caroussel">
+  <div class="img-caroussel active" data-img="1" style="background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+    <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/montagne-enneigee-sous-les-etoiles-phIFdC6lA4E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></a>
+    </div>   
+  </div>
 
-				<nav class="pagination">
-					<a id="item_1"  class="pagination__item">#1</a>
-					<a id="item_2"  class="pagination__item">#2</a>
-					<a id="item_3"  class="pagination__item">#3</a>
-					<a id="item_4"  class="pagination__item">#4</a>
-					<a id="item_5"  class="pagination__item">#5</a>  
-				</nav>
-			</div>
-			<div class="slides" style="background-color:#FFF;">
-				<div class="slide">
-					<div class="slide__img" style="background-image: url('https://nurpn.psu.ac.th/th/images/banners/VISION66.png');"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/10.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/9.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/6.jpg);"></div>
-				</div>
-			</div>
-		</main>
+  <div class="img-caroussel" data-img="2" style="background-image: url(https://images.unsplash.com/photo-1514897575457-c4db467cf78e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+  <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/croissant-de-lune-au-dessus-de-la-montagne-U-Kty6HxcQc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  </div>
+  </div>
+  <div class="img-caroussel" data-img="3" style="background-image: url(https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+  <div class="credit">Photo de <a href="https://unsplash.com/fr/@twinckels?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tom Winckels</a> sur <a href="https://unsplash.com/fr/photos/alberi-verdi-sulla-scogliera-I7oLRdM9YIw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  </div>
+  </div>
+  <div class="img-caroussel" data-img="4" style="background-image: url(https://images.unsplash.com/photo-1532079890557-10d83624b9de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+  <div class="credit">Photo de <a href="https://unsplash.com/fr/@appolinary_kalashnikova?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Appolinary Kalashnikova</a> sur <a href="https://unsplash.com/fr/photos/champs-de-fleurs-pendant-la-journee-2onvM-fFMmE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  </div>
+  </div>
 
+<div class="arrows">
+    <i class="farrows fa-solid fa-arrow-left" id="previous"></i>
+    <i class="farrows fa-solid fa-arrow-right" id="next"></i>
+</div>
+
+<div class="slider-position">
+    <span class="round active" data-img="1"></span>
+    <span class="round" data-img="2"></span>
+    <span class="round" data-img="3"></span>
+    <span class="round" data-img="4"></span>
+</div>
+
+
+</div>
+    
 
 
     </div>
@@ -734,11 +723,6 @@ body{
 
 <div class="container">
   <div class="row" style="background-color:white;">
-<center>
-<div class="fade-in-text">
-  <img src="./image/img2.png" width="90%" style="text-align:center;" />
-</div>
-</center>
 
 <br><br><br><br> 
    
@@ -793,10 +777,5 @@ body{
       <a class="designer" href="#">Thierry M</a>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script src="./slicerevealer/js/imagesloaded.pkgd.min.js"></script>
-		<script src="./slicerevealer/js/anime.min.js"></script>
-		<script src="./slicerevealer/js/uncover.js"></script>
-		<script src="./slicerevealer/js/demo11.js"></script>
-
 	</body>
 </html>

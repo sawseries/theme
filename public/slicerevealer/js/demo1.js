@@ -49,6 +49,7 @@
 
     class Slideshow {
         constructor(el) {
+          
             this.DOM = {el: el};
             this.DOM.slides = Array.from(this.DOM.el.querySelectorAll('.slide'));
             this.slidesTotal = this.DOM.slides.length;
@@ -70,6 +71,7 @@
             }).then(() => this.isAnimating = false);
         }
         navigate(pos) {
+           
             if ( this.isAnimating || this.current === pos || pos < 0 || pos > this.slidesTotal - 1 ) return;
             this.isAnimating = true;
 
@@ -82,7 +84,7 @@
                 this.DOM.slides[this.current].classList.add('slide--current');
                 newItem.show(true, {
                     image: {
-                        duration: 800,
+                        duration: 200,
                         delay: 350,
                         easing: 'easeOutCubic',
                         scale: [1.3,1]
@@ -100,7 +102,10 @@
         
         const pagination = document.querySelector('.pagination');
         const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
+        
         triggers.forEach((trigger,pos) => {
+
+     
             if ( pos === 0 ) {
                 trigger.classList.add('pagination__item--current');
             }
@@ -110,6 +115,7 @@
                 pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
                 trigger.classList.add('pagination__item--current');
             })
+           
         });
     
         document.addEventListener('keydown', (ev) => {

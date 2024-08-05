@@ -31,195 +31,6 @@ function doSomething(){
 
 $(document).ready(function () {
 
-
-
-    const uncoverOpts = [
-        {
-            // total number of slices.
-            slicesTotal: 10,
-            // slices color.
-            slicesColor: '#FFF',
-            // 'vertical' || 'horizontal'.
-            orientation: 'vertical',
-            // 'bottom' || 'top' for vertical orientation and 'right' || 'left' for horizontal orientation.
-            slicesOrigin: {show: 'bottom', hide: 'bottom'}
-        },
-        {
-            slicesTotal: 7, 
-            slicesColor: '#FFF', 
-            orientation: 'horizontal', 
-            slicesOrigin:  {show: 'right', hide: 'right'}
-        },
-        {
-            slicesTotal: 9,
-            slicesColor: '#FFF',
-            orientation: 'vertical',
-            slicesOrigin:  {show: 'bottom', hide: 'bottom'}
-        },
-        {
-            slicesTotal: 5,
-            slicesColor: '#FFF',
-            orientation: 'horizontal',
-            slicesOrigin:  {show: 'left', hide: 'left'}
-        },
-        {
-            slicesTotal: 6,
-            slicesColor: '#FFF',
-            orientation: 'vertical',
-            slicesOrigin:  {show: 'bottom', hide: 'bottom'}
-        }
-    ];
-
-    class Slideshow {
-        constructor(el) {
-          
-            this.DOM = {el: el};
-            this.DOM.slides = Array.from(this.DOM.el.querySelectorAll('.slide'));
-            this.slidesTotal = this.DOM.slides.length;
-            this.current = 0;
-            this.uncoverItems = [];
-            this.DOM.slides.forEach((slide,pos) => this.uncoverItems.push(new Uncover(slide.querySelector('.slide__img'), uncoverOpts[pos])));
-            this.init();
-        }
-        init() {
-            this.isAnimating = true;
-            this.DOM.slides[this.current].classList.add('slide--current');
-            this.uncoverItems[this.current].show(true, {
-                image: {
-                    duration: 800,
-                    delay: 350,
-                    easing: 'easeOutCubic',
-                    scale: [1.3,1]
-                }
-            }).then(() => this.isAnimating = false);
-        }
-        navigate(pos) {
-          // alert("navagae :"+pos)
-            //if ( this.isAnimating || this.current === pos || pos < 0 || pos > this.slidesTotal - 1 ) return;
-            //this.isAnimating = true;
-           
-            const pagination = document.querySelector('.pagination');
-            const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
-
-            this.uncoverItems[this.current].hide(true).then(() => {
-                this.DOM.slides[this.current].classList.remove('slide--current');
-                this.current = pos;
-                
-
-                const newItem = this.uncoverItems[this.current];
-                newItem.hide();
-                this.DOM.slides[this.current].classList.add('slide--current');
-              
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                triggers[pos].classList.add('pagination__item--current');
-              
-                newItem.show(true, {
-                    image: {
-                        duration: 100,
-                        delay: 200,
-                        easing: 'easeOutCubic',
-                        scale: [1.3,2]
-                    }
-                }).then(() => this.isAnimating = false);
-            });
-        }
-    }
-    
-    // Preload all the images in the page..
-	imagesLoaded(document.querySelectorAll('.slide__img'), {background: true}, () => {
-        document.body.classList.remove('loading');
-        
-        const slideshow = new Slideshow(document.querySelector('.slides'));
-        const pagination = document.querySelector('.pagination');
-        const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
-        
-        triggers.forEach((trigger,pos) => {
-
-        
-            if ( pos === 0 ) {
-                trigger.classList.add('pagination__item--current');
-            }
-            trigger.addEventListener('click', () => {
-              //alert("cl "+pos);
-                if ( slideshow.isAnimating ) return;
-                slideshow.navigate(pos);
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                trigger.classList.add('pagination__item--current');
-            })
-           
-        });
-    
-        document.addEventListener('keydown', (ev) => {
-            if ( slideshow.isAnimating ) return;
-            const keyCode = ev.keyCode || ev.which;
-            //alert(keyCode);
-            let newpos;
-            if ( keyCode === 37 ) {
-                newpos = slideshow.current > 0 ? slideshow.current-1 : slideshow.slidesTotal-1;
-                //alert(newpos);
-                slideshow.navigate(newpos);
-            }
-            else if ( keyCode === 39 ) {
-                newpos = slideshow.current < slideshow.slidesTotal-1 ? slideshow.current+1 : 0;
-                //alert(newpos);
-                slideshow.navigate(newpos);
-            }
-            else return;
-            pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-            triggers[newpos].classList.add('pagination__item--current');
-        });
-    });
-
-
-
-
-
-/*var i=0;
-setInterval(function() {
-  alertFunc();
-
-}, 2000);
-
-function alertFunc() {
-  //$("#item_"+i).click();
- //alert(document.querySelector('.slides'));
-//alert(i);
- const slideshow = new Slideshow(document.querySelector('.slides'));
- //slideshow.navigate(i);
-
- if ( slideshow.isAnimating ) return;
-                slideshow.navigate(i);
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                trigger.classList.add('pagination__item--current');
-
-  i=i+1;  
-  if(i>5){
-    i=0;
-  }
-}*/
-
-var i=1;
-setInterval(function() {
-  alertFunc();
-}, 10000);
-
-function alertFunc() {
-
- const slideshow = new Slideshow(document.querySelector('.slides'));
- slideshow.navigate(i);
-
- i=i+1;  
-  if(i>4){
-    i=0;
-  }
- /*if ( slideshow.isAnimating ) return;
-                slideshow.navigate(i);
-                pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
-                trigger.classList.add('pagination__item--current');*/
-
-
-}
-
 });
 
 
@@ -286,7 +97,7 @@ body{
 
 
 .navbar {
-    background-color:#0c4678;
+    
     box-shadow: 5px 0px 5px #ccc;
     width:100vm;  
     padding: 0px 70px;
@@ -302,11 +113,9 @@ body{
 
 .navbar-toggle button{
     background-color:transparent;
-    padding:0em;
-    font-size:15pt;
-    display:block;
-    color:white;
-    border:0px solid transparent;
+    padding:0.2rem;
+    font-size:18pt;
+    border-radius:5px;
 }
 
 .navbar-logo{
@@ -697,36 +506,102 @@ body{
 <div class="container-fluid">
   <div class="row" style="background-color:white;">
 		
-		<main style="background-color:#FFF;">
-			<div class="content content--fixed">
+	
 
+    <main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+					<div class="codrops-links">
+						<a class="codrops-icon codrops-icon--prev" href="https://tympanus.net/Development/OutdoorsTemplate/" title="Previous Demo">
+							<svg class="icon icon--arrow">
+								<use xlink:href="#icon-arrow"></use>
+							</svg>
+						</a>
+						<a class="codrops-icon codrops-icon--drop" href="https://tympanus.net/codrops/?p=33895" title="Back to the article">
+							<svg class="icon icon--drop">
+								<use xlink:href="#icon-drop"></use>
+							</svg>
+						</a>
+					</div>
+					<h1 class="codrops-header__title">Slice Revealer</h1>
+					<nav class="demos">
+						<a class="demo" href="index.html"><span>Demo 1</span></a>
+						<a class="demo demo--current" href="index2.html"><span>Demo 2</span></a>
+						<a class="demo" href="index3.html"><span>Demo 3</span></a>
+					</nav>
+				</header>
+				<a class="github" href="https://github.com/codrops/SliceRevealer" title="Find this project on GitHub">
+					<svg class="icon icon--github">
+						<use xlink:href="#icon-github"></use>
+					</svg>
+				</a>
 				<nav class="pagination">
-					<a id="item_1"  class="pagination__item">#1</a>
-					<a id="item_2"  class="pagination__item">#2</a>
-					<a id="item_3"  class="pagination__item">#3</a>
-					<a id="item_4"  class="pagination__item">#4</a>
-					<a id="item_5"  class="pagination__item">#5</a>  
+					<span class="pagination__item">#1</span>
+					<span class="pagination__item">#2</span>
+					<span class="pagination__item">#3</span>
+					<span class="pagination__item">#4</span>
+					<span class="pagination__item">#5</span>
 				</nav>
 			</div>
-			<div class="slides" style="background-color:#FFF;">
-				<div class="slide">
-					<div class="slide__img" style="background-image: url('https://nurpn.psu.ac.th/th/images/banners/VISION66.png');"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/10.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/9.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/6.jpg);"></div>
+			<div class="content">
+				<div class="slides">
+					<div class="slide slide--current">
+						<div class="slide__img slide__img-size1" style="background-image: url(./slicerevealer/img/6.jpg);"></div>
+					</div>
+					<div class="slide">
+						<div class="slide__img slide__img-size2" style="background-image: url(./slicerevealer/img/9.jpg);"></div>
+					</div>
+					<div class="slide">
+						<div class="slide__img slide__img-size1" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
+					</div>
+					<div class="slide">
+						<div class="slide__img slide__img-size3" style="background-image: url(./slicerevealer/img/10.jpg);"></div>
+					</div>
+					<div class="slide">
+						<div class="slide__img slide__img-size2" style="background-image: url(./slicerevealer/img/2.jpg);"></div>
+					</div>
 				</div>
 			</div>
-		</main>
 
+			<!-- replace "slide__img" with the following structure:
+
+			<div class="revealer slide__img">
+				<div class="revealer__img" style="background-image: url(img/1.jpg)"></div>
+				<div class="revealer__slices revealer__slices--vertical">
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+					<div class="revealer__slice"></div>
+				</div>
+			</div> 
+
+		    -->
+
+			<!-- 
+
+				- apply revealer layout class to "revealer__slices":
+						- revealer__slices--vertical 
+						(translate slices either up or down e.g. translate3d(0,-100%,0) and then animate to 0)
+
+						- revealer__slices--vertical-double -> also set e.g. "grid-template-columns: repeat(5,20%)" ; first value slices/2, second value is 100%/slices/2 
+						(translate first half of items up and second half down)
+
+						- revealer__slices--horizontal (translate to sides)
+						
+						- revealer__slices--horizontal-double (first half left, second half right)
+					
+				- add revealer__slice divs; note that the "-double" layouts spread them over the sides, i.e. 8 divs results in 4 on each side 
+
+				- apply background color to "revealer__slice"
+
+			-->
+		</main>
 
 
     </div>
@@ -734,11 +609,6 @@ body{
 
 <div class="container">
   <div class="row" style="background-color:white;">
-<center>
-<div class="fade-in-text">
-  <img src="./image/img2.png" width="90%" style="text-align:center;" />
-</div>
-</center>
 
 <br><br><br><br> 
    
@@ -797,6 +667,6 @@ body{
 		<script src="./slicerevealer/js/anime.min.js"></script>
 		<script src="./slicerevealer/js/uncover.js"></script>
 		<script src="./slicerevealer/js/demo11.js"></script>
-
+    <script src="./slicerevealer/js/demo2.js"></script>
 	</body>
 </html>
