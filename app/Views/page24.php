@@ -26,6 +26,173 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+<link rel="stylesheet" type="text/css" href="./slicerevealer/css/base1.css" />
+<link rel="stylesheet" type="text/css" href="./slicerevealer/css/uncover.css" />
+
+<script>
+
+$(document).ready(function () {
+
+
+
+const uncoverOpts = [
+    {
+        // total number of slices.
+        slicesTotal: 10,
+        // slices color.
+        slicesColor: '#FFF',
+        // 'vertical' || 'horizontal'.
+        orientation: 'vertical',
+        // 'bottom' || 'top' for vertical orientation and 'right' || 'left' for horizontal orientation.
+        slicesOrigin: {show: 'bottom', hide: 'bottom'}
+    },
+    {
+        slicesTotal: 7, 
+        slicesColor: '#FFF', 
+        orientation: 'horizontal', 
+        slicesOrigin:  {show: 'right', hide: 'right'}
+    },
+    {
+        slicesTotal: 9,
+        slicesColor: '#FFF',
+        orientation: 'vertical',
+        slicesOrigin:  {show: 'bottom', hide: 'bottom'}
+    },
+    {
+        slicesTotal: 5,
+        slicesColor: '#FFF',
+        orientation: 'horizontal',
+        slicesOrigin:  {show: 'left', hide: 'left'}
+    },
+    {
+        slicesTotal: 6,
+        slicesColor: '#FFF',
+        orientation: 'vertical',
+        slicesOrigin:  {show: 'bottom', hide: 'bottom'}
+    }
+];
+
+class Slideshow {
+    constructor(el) {
+      
+        this.DOM = {el: el};
+        this.DOM.slides = Array.from(this.DOM.el.querySelectorAll('.slide'));
+        this.slidesTotal = this.DOM.slides.length;
+        this.current = 0;
+        this.uncoverItems = [];
+        this.DOM.slides.forEach((slide,pos) => this.uncoverItems.push(new Uncover(slide.querySelector('.slide__img'), uncoverOpts[pos])));
+        this.init();
+    }
+    init() {
+        this.isAnimating = true;
+        this.DOM.slides[this.current].classList.add('slide--current');
+        this.uncoverItems[this.current].show(true, {
+            image: {
+                duration: 800,
+                delay: 350,
+                easing: 'easeOutCubic',
+                scale: [1.3,1]
+            }
+        }).then(() => this.isAnimating = false);
+    }
+    navigate(pos) {
+      // alert("navagae :"+pos)
+        //if ( this.isAnimating || this.current === pos || pos < 0 || pos > this.slidesTotal - 1 ) return;
+        //this.isAnimating = true;
+       
+        const pagination = document.querySelector('.pagination');
+        const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
+
+        this.uncoverItems[this.current].hide(true).then(() => {
+            this.DOM.slides[this.current].classList.remove('slide--current');
+            this.current = pos;
+            
+
+            const newItem = this.uncoverItems[this.current];
+            newItem.hide();
+            this.DOM.slides[this.current].classList.add('slide--current');
+          
+            pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
+            triggers[pos].classList.add('pagination__item--current');
+          
+            newItem.show(true, {
+                image: {
+                    duration: 100,
+                    delay: 200,
+                    easing: 'easeOutCubic',
+                    scale: [1.3,2]
+                }
+            }).then(() => this.isAnimating = false);
+        });
+    }
+}
+
+// Preload all the images in the page..
+imagesLoaded(document.querySelectorAll('.slide__img'), {background: true}, () => {
+    document.body.classList.remove('loading');
+    
+    const slideshow = new Slideshow(document.querySelector('.slides'));
+    const pagination = document.querySelector('.pagination');
+    const triggers = Array.from(pagination.querySelectorAll('.pagination__item'));
+    
+    triggers.forEach((trigger,pos) => {
+
+    
+        if ( pos === 0 ) {
+            trigger.classList.add('pagination__item--current');
+        }
+        trigger.addEventListener('click', () => {
+          //alert("cl "+pos);
+            if ( slideshow.isAnimating ) return;
+            slideshow.navigate(pos);
+            pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
+            trigger.classList.add('pagination__item--current');
+        })
+       
+    });
+
+    document.addEventListener('keydown', (ev) => {
+        if ( slideshow.isAnimating ) return;
+        const keyCode = ev.keyCode || ev.which;
+        //alert(keyCode);
+        let newpos;
+        if ( keyCode === 37 ) {
+            newpos = slideshow.current > 0 ? slideshow.current-1 : slideshow.slidesTotal-1;
+            //alert(newpos);
+            slideshow.navigate(newpos);
+        }
+        else if ( keyCode === 39 ) {
+            newpos = slideshow.current < slideshow.slidesTotal-1 ? slideshow.current+1 : 0;
+            //alert(newpos);
+            slideshow.navigate(newpos);
+        }
+        else return;
+        pagination.querySelector('.pagination__item--current').classList.remove('pagination__item--current');
+        triggers[newpos].classList.add('pagination__item--current');
+    });
+});
+
+var i=2;
+setInterval(function() {
+alertFunc();
+}, 8000);
+
+function alertFunc() {
+
+const slideshow = new Slideshow(document.querySelector('.slides'));
+slideshow.navigate(i);
+
+i=i+1;  
+if(i>4){
+i=0;
+}
+}
+});
+
+
+</script>
+
+
 <script>
     $(window).scroll(function(){
     
@@ -39,6 +206,7 @@
 
         $(document).ready(function () {
 
+          document.getElementById("London").style.display = "block";
 
 const img_slider_elements=document.querySelectorAll(".img-caroussel");
 const arrows_elts= document.querySelectorAll(".arrows i")
@@ -69,14 +237,28 @@ setInterval(function() {
      i=0;
     }
 
-}, 3000);
+}, 5000);
 
 
 });
 
       
 </script>
-
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
 
 <style>
     html {
@@ -91,17 +273,17 @@ body{
 
 @font-face {
   font-family: PSU-Stidti-Regular;
-  src: url('./font/PSUStidti/PSU-Stidti-Regular.otf');
+  src: url('./font/PSUStidtiWebfont/psu-stidti-regular.ttf');
 }
 
 @font-face {
   font-family: PSU-Stidti-Light;
-  src: url('./font/PSUStidti/PSU-Stidti-Light.otf');
+  src: url('./font/PSUStidtiWebfont/psu-stidti-light.ttf');
 }
 
 @font-face {
   font-family:PSU-Stidti-Bold;
-  src: url('./font/PSUStidti/PSU-Stidti-Bold.otf');
+  src: url('./font/PSUStidtiWebfont/psu-stidti-bold.ttf');
 }
 
 
@@ -128,7 +310,7 @@ body{
 
 
 .arrow{
-  float:right;width:20px;text-align:right;
+  float:right;width:20px;text-align:right;font-size:12px;
 }
 
 .navbar {
@@ -293,7 +475,7 @@ background-color:#e9eef4;
       list-style-type:none;
       display:block;
       padding:1.5rem;
-      border-bottom:1px solid gray;
+      border-bottom:1px solid #ccc;
     }
 
     .navbar-links .navbar-dropdown .dropdown li:hover{
@@ -317,7 +499,7 @@ background-color:#e9eef4;
   
 .footer-title {
  
-  font-size: 16pt;
+  font-size: 15pt;
   padding: 1rem 0;
   color:white;
   background-clip: text;
@@ -365,7 +547,7 @@ background-color:#e9eef4;
 }
 
 .flex-container > div > img{
- width:90%;
+ width:80%;
   
 }
 
@@ -657,10 +839,67 @@ hr {
 }
 
 .flex-container > div {
-  margin: 10px;
+  margin:2px;
   padding:0px;
   font-size:10px;
-  
+  border:0px solid gray;
+  word-wrap: break-word;
+}
+
+.flex-container > div > img{
+ width:100%;
+ height: 100%;
+}
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+  background-color:#fff;
+  min-height:400px;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 </style>
@@ -669,7 +908,7 @@ hr {
 <body> 
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
-      <li class="navlogo"><img src="https://www.psu.ac.th/img/logos/psu_en.png" height="50px" /></li>     
+      <li class="navlogo"><img src="https://www.psu.ac.th/img/logos/psu_en.png" height="40px" /></li>     
       </ul>
 
       <ul class="navbar-toggle" style="float:right;">
@@ -736,12 +975,12 @@ hr {
 		
 	<!--slide-->
   <div id="caroussel">
-      <div class="img-caroussel active" data-img="1" style="background-image: url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <div class="img-caroussel active" data-img="1" style="background-image: url(https://nurpn.psu.ac.th/th/images/banners/VISION66.png)">
       <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/montagne-enneigee-sous-les-etoiles-phIFdC6lA4E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></a>
       </div>   
       </div>
 
-      <div class="img-caroussel" data-img="2" style="background-image: url(https://images.unsplash.com/photo-1514897575457-c4db467cf78e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+      <div class="img-caroussel" data-img="2" style="background-image: url(./image/slide1.png)">
       <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/croissant-de-lune-au-dessus-de-la-montagne-U-Kty6HxcQc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       </div>
       </div>
@@ -770,11 +1009,39 @@ hr {
 <!--slide-->
     </div>
     
-    <div class="row" style="background-color:#e9eef4;min-height:350px;">
+    <div class="row" style="background-color:#fff;">
 
-    <!--<img src="./image/img3.png" width="100%" style="text-align:center;" />-->
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col col-md-5 col-sm-12" style="margin:20px;background-color:#003c71;min-height:450px;">
+      111111
+    </div>  
+    <div class="col col-md-6 col-sm-12" style="margin:20px;">
+      <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')">สมัครงาน</button>
+      <button class="tablinks" onclick="openCity(event, 'Paris')">ประชาสัมพันธ์</button>
+      <button class="tablinks" onclick="openCity(event, 'Tokyo')">จัดซื้อจัดจ้าง</button>
+      </div>
+
+      <div id="London" class="tabcontent">
+      <h3>London</h3>
+      <p>London is the capital city of England.</p>
+      </div>
+
+      <div id="Paris" class="tabcontent">
+      <h3>Paris</h3>
+      <p>Paris is the capital of France.</p> 
+      </div>
+
+      <div id="Tokyo" class="tabcontent">
+      <h3>Tokyo</h3>
+      <p>Tokyo is the capital of Japan.</p>
+      </div>
 
     </div>
+    </div>
+    </div>
+  </div>
 
     <div class="row" style="background-color:white;">
     <center>
@@ -809,8 +1076,8 @@ hr {
         <?php for($i=1;$i<=3;$i++){ ?>
 
           <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" width="100%" class="img-fluid"></div>
-  <div style="width:40%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า แล..</div>
+  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
+  <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
 </div>
        
         <?php } ?>
@@ -823,8 +1090,8 @@ hr {
 
 
 <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" width="100%" class="img-fluid"></div>
-  <div style="width:40%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า แล..</div>
+  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div> 
+  <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
 </div>
 
 
@@ -866,7 +1133,43 @@ hr {
   </div>-->
   <!--endcon -->
 
+  <div class="container-fluid">
+  <div class="row" style="background-color:white;">
+		
+		<main style="background-color:#FFF;">
+			<div class="content content--fixed">
 
+				<nav class="pagination">
+					<a id="item_1"  class="pagination__item">#1</a>
+					<a id="item_2"  class="pagination__item">#2</a>
+					<a id="item_3"  class="pagination__item">#3</a>
+					<a id="item_4"  class="pagination__item">#4</a>
+					<a id="item_5"  class="pagination__item">#5</a>  
+				</nav>
+			</div>
+			<div class="slides" style="background-color:#FFF;">
+				<div class="slide">
+					<div class="slide__img" style="background-image: url('./image/slide1.png');"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/10.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/9.jpg);"></div>
+				</div>
+				<div class="slide">
+					<div class="slide__img" style="background-image: url(./slicerevealer/img/6.jpg);"></div>
+				</div>
+			</div>
+		</main>
+
+
+
+    </div>
+</div>
 
 
 <!--#2c4988 -->
@@ -915,5 +1218,9 @@ hr {
       <a class="designer" href="#">Thierry M</a>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="./slicerevealer/js/imagesloaded.pkgd.min.js"></script>
+		<script src="./slicerevealer/js/anime.min.js"></script>
+		<script src="./slicerevealer/js/uncover.js"></script>
+		<script src="./slicerevealer/js/demo11.js"></script>
 	</body>
 </html>
