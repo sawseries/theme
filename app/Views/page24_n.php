@@ -36,7 +36,8 @@ $(document).ready(function () {
 
 
 const uncoverOpts = [
-    {
+    
+    /*{
         // total number of slices.
         slicesTotal: 10,
         // slices color.
@@ -45,6 +46,12 @@ const uncoverOpts = [
         orientation: 'vertical',
         // 'bottom' || 'top' for vertical orientation and 'right' || 'left' for horizontal orientation.
         slicesOrigin: {show: 'bottom', hide: 'bottom'}
+    },*/
+    {
+      slicesTotal: 7, 
+        slicesColor: '#FFF', 
+        orientation: 'horizontal', 
+        slicesOrigin:  {show: 'right', hide: 'right'}
     },
     {
         slicesTotal: 7, 
@@ -296,7 +303,7 @@ body{
     left: 0;
     width: 100%;
     transition: max-height 0.2s ease-in;
-    opacity: 0.8;
+    opacity:1;
 }
 
 
@@ -1133,6 +1140,13 @@ hr {
   </div>-->
   <!--endcon -->
 
+
+  <div class="container-fluid">
+  <div class="row" style="background-color:white;min-height:400px;">
+    </div>
+  </div>
+
+
   <div class="container-fluid">
   <div class="row" style="background-color:white;">
 		
@@ -1152,7 +1166,7 @@ hr {
 					<div class="slide__img" style="background-image: url('./image/slide1.png');"></div>
 				</div>
 				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/10.jpg);"></div>
+					<div class="slide__img" style="background-image: url(https://static.ybox.vn/2022/5/3/1653434516320-Thi%E1%BA%BFt%20k%E1%BA%BF%20ch%C6%B0a%20c%C3%B3%20t%C3%AAn%20(23).png);"></div>
 				</div>
 				<div class="slide">
 					<div class="slide__img" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
