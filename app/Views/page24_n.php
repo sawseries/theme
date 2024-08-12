@@ -95,10 +95,10 @@ class Slideshow {
         this.DOM.slides[this.current].classList.add('slide--current');
         this.uncoverItems[this.current].show(true, {
             image: {
-                duration: 800,
-                delay: 350,
+                duration:150,
+                delay:100,
                 easing: 'easeOutCubic',
-                scale: [1.3,1]
+                scale: [1.2,1]
             }
         }).then(() => this.isAnimating = false);
     }
@@ -124,10 +124,10 @@ class Slideshow {
           
             newItem.show(true, {
                 image: {
-                    duration: 100,
-                    delay: 200,
-                    easing: 'easeOutCubic',
-                    scale: [1.3,2]
+                  duration:150,
+                delay:50,
+                easing: 'easeOutCubic',
+                scale: [1.2,1]
                 }
             }).then(() => this.isAnimating = false);
         });
@@ -196,7 +196,6 @@ i=0;
 }
 });
 
-
 </script>
 
 
@@ -211,9 +210,35 @@ i=0;
         });
 
 
-        $(document).ready(function () {
 
-          document.getElementById("London").style.display = "block";
+var item=parseInt(0);
+var ispause=false;
+
+
+$(document).ready(function () {
+
+document.getElementById("London").style.display = "block";
+
+  setInterval(function() {
+  
+  if(item==4){
+    item=0;
+  }
+  
+  runslide(item);
+  item=item+1;
+     
+}, 5000);
+
+});
+
+function rounds(i){
+
+    runslide(i);
+    item = i;
+}
+
+function runslide(i){
 
 const img_slider_elements=document.querySelectorAll(".img-caroussel");
 const arrows_elts= document.querySelectorAll(".arrows i")
@@ -221,10 +246,7 @@ const round_elts=document.querySelectorAll(".round");
 
 const slide = Array.from(document.querySelectorAll(".img-caroussel"));
 const dot = Array.from(document.querySelectorAll(".round"));
-
-var i=0;
-setInterval(function() {
-
+  
     img_slider_elements.forEach((img)=>{
     img.classList.remove("active");
     img.classList.remove("fade");
@@ -238,17 +260,31 @@ setInterval(function() {
     slide[i].classList.add('fade');
 
     dot[i].classList.add('active');
-    i++; 
+     
+}
 
-    if(i==4){
-     i=0;
-    }
+function previous(){
+ 
+  item=item-1;
+  
+  if(item<0){
+    item=3;
+  }
+  runslide(item);
 
-}, 5000);
+}
+
+function next(){
 
 
-});
+  item=item+1;
 
+  if(item>3){
+    item=0;
+  }
+  runslide(item);
+    
+}
       
 </script>
 <script>
@@ -367,28 +403,10 @@ body{
   list-style-type: none;
   display: flex;
   width:100vh;
-}
-
-.navbar-login{
-    list-style-type: none;
-    display: flex;
-    width:auto;
-}
-
-.navbar-login li a {
-  display: block;
-  text-decoration: none;
-  color: #FFF;
-  padding: 15px 20px;
-  font-weight: 700;
-  transition: 0.4s all;
-  background-color:#0c4678;
-  margin:5px;
-}
-
-.navbar-links{
   margin:10px;
 }
+
+
 
 .navbar-links li a {
   display: block;
@@ -473,7 +491,7 @@ background-color:#e9eef4;
     .navbar-links li.navbar-dropdown .lbmenu span{
       padding: 15px 20px;
       color :#424949;
-      
+      font-weight: normal !important;
       cursor : pointer;
       display: block;
     }
@@ -541,143 +559,143 @@ background-color:#e9eef4;
 
   .box{
 
-  min-height:400px;
+min-height:400px;
 
 }
 
 .flex-container{
-  padding:0;
+padding:0;
 }
 
 .flex-container > div{
- margin:0;
+margin:0;
 }
 
 .flex-container > div > img{
- width:80%;
-  
+width:80%;
+
 }
 
-  .sticky{
-    position:relative;
-    opacity:1;
+.sticky{
+  position:relative;
+  opacity:1;
+}
+
+  .navbar-login{
+      display:none;
   }
 
-    .navbar-login{
-        display:none;
-    }
+  .navbar-toggle{
+    display:block;
+  }
 
-    .navbar-toggle{
+  .navbar {
+  padding: 0px;
+  margin:0;
+  left:0;
+  }
+
+.navbar-links{
+      width: 100%;
+      transition: all 0.3s ease-in;
+      top:0;
       display:block;
-    }
+      position:relative;
+      padding: 0px;
+  margin:0;
+  left:0;
+  }
 
-    .navbar {
-    padding: 0px;
-    margin:0;
-    left:0;
-    }
+  .navbar-links li.navbar-dropdown .lbmenu span:hover{
+  color: #4EACF8;
+  background-color:#e9eef4;
+}
 
-  .navbar-links{
-        width: 100%;
-        transition: all 0.3s ease-in;
-        top:0;
-        display:block;
-        position:relative;
-        padding: 0px;
-    margin:0;
-    left:0;
-    }
 
-    .navbar-links li.navbar-dropdown .lbmenu span:hover{
+  .navbar-links .navbar-dropdown .dropdown li:hover{
     color: #4EACF8;
     background-color:#e9eef4;
+    position:relative;
   }
 
-
-    .navbar-links .navbar-dropdown .dropdown li:hover{
-      color: #4EACF8;
-      background-color:#e9eef4;
-      position:relative;
-    }
-
-    .navbar-links li.navbar-dropdown:hover .dropdown {
-      visibility: hidden;
-      opacity: 1;
-      transform: translateY(0px);
-      display:none;  
-    }
-
-   .navbar-links li.navbar-dropdown .lbmenu span{
-    padding:2em;
-    color : #000;
-    font-variant : small-caps;
-    cursor : pointer;
-    width:95vw;
-     display: block;
-    }
-
-    .navbar-links li.navbar-dropdown .dropdown {
+  .navbar-links li.navbar-dropdown:hover .dropdown {
     visibility: hidden;
-    opacity: 0;
-    padding: 20px 0;
-    transform: translateY(50px);
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    z-index: 111;
-    transition: 0.4s all;
-    width:100%;
-   }
-
-  .dropdown{
-    display:none;
-    transition: transform .6s cubic-bezier(1,-0.72, 0, 1), opacity .6s ease-in-out;
-	  transform: translateY(-10rem);
+    opacity: 1;
+    transform: translateY(0px);
+    display:none;  
   }
 
+ .navbar-links li.navbar-dropdown .lbmenu span{
+  padding:2em;
+  color : #000;
+  font-variant : small-caps;
+  cursor : pointer;
+  width:95vw;
+   display: block;
+  }
+
+  .navbar-links li.navbar-dropdown .dropdown {
+  visibility: hidden;
+  opacity: 0;
+  padding: 20px 0;
+  transform: translateY(50px);
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  z-index: 111;
+  transition: 0.4s all;
+  width:100%;
+ }
+
+.dropdown{
+  display:none;
+  transition: transform .6s cubic-bezier(1,-0.72, 0, 1), opacity .6s ease-in-out;
+  transform: translateY(-10rem);
+}
 
 
-    #menu1:checked +ul{
-      visibility: visible;
-    opacity: 1;
-    transform: translateY(0px);
-    display:block;
-    position:relative;  
-    }
 
-    #menu2:checked +ul{
-      visibility: visible;
-    opacity: 1;
-    transform: translateY(0px);
-    display:block;
-    position:relative;  
-    }
+  #menu1:checked +ul{
+    visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+  display:block;
+  position:relative;  
+  }
 
-    #menu3:checked +ul{
-      visibility: visible;
-    opacity: 1;
-    transform: translateY(0px);
-    display:block;
-    position:relative;  
-    }
+  #menu2:checked +ul{
+    visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+  display:block;
+  position:relative;  
+  }
 
-    #menu4:checked +ul{
-      visibility: visible;
-    opacity: 1;
-    transform: translateY(0px);
-    display:block;
-    position:relative;  
-    }
+  #menu3:checked +ul{
+    visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+  display:block;
+  position:relative;  
+  }
 
-    #menu5:checked +ul{
-      visibility: visible;
-    opacity: 1;
-    transform: translateY(0px);
-    display:block;
-    position:relative;  
-    }
+  #menu4:checked +ul{
+    visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+  display:block;
+  position:relative;  
+  }
+
+  #menu5:checked +ul{
+    visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+  display:block;
+  position:relative;  
+  }
 
    
 }
@@ -763,9 +781,9 @@ background-color:#e9eef4;
 
 .slider-position .round{
     display: inline-block;
-    width: 5px;
-    height: 5px;
-    background-color: transparent;
+    width: 10px;
+    height: 10px;
+    background-color: black;
     border-radius: 50%;
     border: white solid 1px;
     cursor: pointer;
@@ -775,7 +793,7 @@ background-color:#e9eef4;
 
 
 .slider-position .round.active{
-    background-color: white;
+    background-color: #ddd;
 }
 
 
@@ -915,7 +933,7 @@ hr {
 <body> 
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
-      <li class="navlogo"><img src="https://www.psu.ac.th/img/logos/psu_en.png" height="40px" /></li>     
+      <li class="navlogo"><img src="https://www.psu.ac.th/img/logos/psu_en.png" height="52px" width="170px" /></li>     
       </ul>
 
       <ul class="navbar-toggle" style="float:right;">
@@ -982,40 +1000,37 @@ hr {
 		
 	<!--slide-->
   <div id="caroussel">
-      <div class="img-caroussel active" data-img="1" style="background-image: url(https://nurpn.psu.ac.th/th/images/banners/VISION66.png)">
-      <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/montagne-enneigee-sous-les-etoiles-phIFdC6lA4E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></a>
-      </div>   
-      </div>
-
-      <div class="img-caroussel" data-img="2" style="background-image: url(./image/slide1.png)">
-      <div class="credit">Photo de <a href="https://unsplash.com/fr/@vorosbenisop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Benjamin Voros</a> sur <a href="https://unsplash.com/fr/photos/croissant-de-lune-au-dessus-de-la-montagne-U-Kty6HxcQc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-      </div>
-      </div>
-      <div class="img-caroussel" data-img="3" style="background-image: url(https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-      <div class="credit">Photo de <a href="https://unsplash.com/fr/@twinckels?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tom Winckels</a> sur <a href="https://unsplash.com/fr/photos/alberi-verdi-sulla-scogliera-I7oLRdM9YIw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-      </div>
-      </div>
-      <div class="img-caroussel" data-img="4" style="background-image: url(https://images.unsplash.com/photo-1532079890557-10d83624b9de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
-      <div class="credit">Photo de <a href="https://unsplash.com/fr/@appolinary_kalashnikova?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Appolinary Kalashnikova</a> sur <a href="https://unsplash.com/fr/photos/champs-de-fleurs-pendant-la-journee-2onvM-fFMmE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-      </div>
-      </div>
+      <div class="img-caroussel active" data-img="1" style="background-image: url(https://nurpn.psu.ac.th/th/images/banners/VISION66.png)"></div>
+      <div class="img-caroussel" data-img="2" style="background-image: url(./image/slide1.png)"></div>
+      <div class="img-caroussel" data-img="3" style="background-image: url(https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"></div>
+      <div class="img-caroussel" data-img="4" style="background-image: url(https://images.unsplash.com/photo-1532079890557-10d83624b9de?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"></div>
 
     <div class="arrows">
-    <i class="farrows fa-solid fa-arrow-left" id="previous"></i>
-    <i class="farrows fa-solid fa-arrow-right" id="next"></i>
+    <i class="farrows fa-solid fa-arrow-left" onclick="previous();" id="previous"></i>
+    <i class="farrows fa-solid fa-arrow-right" onclick="next();" id="next"></i> 
     </div>
 
     <div class="slider-position">
-    <span class="round active" data-img="1"></span>
-    <span class="round" data-img="2"></span>
-    <span class="round" data-img="3"></span>
-    <span class="round" data-img="4"></span>
+    <span class="round active" onclick="rounds(0);" data-img="1"></span>
+    <span class="round" onclick="rounds(1);" data-img="2"></span>
+    <span class="round" onclick="rounds(2);" data-img="3"></span>
+    <span class="round" onclick="rounds(3);" data-img="4"></span>
     </div>
 </div>
 
 <!--slide-->
     </div>
     
+
+    <div class="row" style="background-color:white;">
+    <center>
+    <div class="fade-in-text">
+      <img src="./image/pro1.png" width="100%" style="text-align:center;" />
+    </div>
+    </center>
+    </div>
+
+
     <div class="row" style="background-color:#fff;">
 
     <div class="container-fluid">
@@ -1059,7 +1074,7 @@ hr {
     </div>
 
 
-    <div class="row" style="background-color:#f4f4f2;min-height:300px;padding:3em;">
+    <div class="row" style="background-color:#f4f4f2;min-height:300px;padding:2em;">
     
     <h2>ข่าวสาร</h2> 
     <span style="margin:10px;color:#959596;"><b>ข่าวเด่น</b></span>  <span style="margin:10px;color:#959596;"><b>ข่าววิจัยและนวัตกรรม</b></span>
@@ -1229,7 +1244,6 @@ hr {
     </div>
     <div class="container-fluid end-footer" style="background-color:#00305b;color:white;">
       <div class="copyright">© 2021 Copyright: Prince of Songkla University, All right reserved</b></div>
-      <a class="designer" href="#">Thierry M</a>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="./slicerevealer/js/imagesloaded.pkgd.min.js"></script>
