@@ -310,8 +310,8 @@ function openCity(evt, cityName) {
 body{
 
     font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 @font-face {
@@ -357,7 +357,7 @@ body{
 }
 
 .navbar {
-    
+  
     box-shadow: 5px 0px 5px #ccc;
     width:100%;  
     padding: 0px 40px;
@@ -574,6 +574,9 @@ background-color:#e9eef4;
    
 @media (max-width: 920px) {
 
+
+
+
   .box{
 
 min-height:400px;
@@ -722,7 +725,6 @@ width:80%;
   display:block;
   position:relative;  
   }
-
    
 }
 
@@ -742,102 +744,7 @@ width:80%;
 }
 
 
-/*slide*/
 
-#caroussel{
-    width: 90%;
-    height: 500px;
-    margin: auto;
-    position: relative;
-    -webkit-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
-}
-
-
-.img-caroussel{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: inherit;
-    transition: 0.6s ease;
-    opacity: 0;
-    position: absolute;
-    width:100%;
-    /*border-radius: 10px;*/
- 
-}
-
-.img-caroussel :hover{
-
-    transition-timing-function: linear;
-    transition-timing-function: cubic-bezier(0, 0, 1, 1);
-}
-
-.img-caroussel.active{
-    opacity: 1;
-   
-}
-
-.farrows{
-    color: white;
-    font-size: 2rem;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.7);
-}
-
-.farrows:hover{
-    cursor: pointer;
-}
-
-
-.fa-arrow-left{
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.fa-arrow-right{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.slider-position .round{
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    border-radius: 50%;
-    border: white solid 1px;
-    cursor: pointer;
-    margin-right: 5px;
-    transition: background-color 0.5s;
-}
-
-
-.slider-position .round.active{
-    background-color: #ddd;
-}
-
-
-.slider-position .round:hover{
-    background-color: white;
-}
-
-.slider-position .round:last-child{
-    margin: 0;
-}
-
-
-.slider-position{
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
 .credit{
     background-color: rgba(228, 214, 214, 0.7) ;
@@ -955,10 +862,115 @@ hr {
 
 
 
+/*slide*/
+
+#caroussel{
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    position: relative;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    resize: both;
+   
+}
+
+
+.img-caroussel{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: inherit;
+    transition: 0.6s ease;
+    opacity: 0;
+    position: absolute;
+    width:100%;
+    resize: both;
+    margin:0;
+ 
+}
+
+.img-caroussel :hover{
+
+    transition-timing-function: linear;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+.img-caroussel.active{
+    opacity: 1;
+   
+}
+
+.farrows{
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.farrows:hover{
+    cursor: pointer;
+}
+
+
+.fa-arrow-left{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fa-arrow-right{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-position .round{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    border: white solid 1px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.5s;
+}
+
+
+.slider-position .round.active{
+    background-color: #ddd;
+}
+
+
+.slider-position .round:hover{
+    background-color: white;
+}
+
+.slider-position .round:last-child{
+    margin: 0;
+}
+
+
+.slider-position{
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
 </style>
 
 </head>
 <body> 
+
+<!---color 
+#003C71
+#009CDE--->
 <div class="navbar">
       <ul class="navbar-logo" style="float:left;">
       <li class="navlogo"><img src="https://www.psu.ac.th/img/logos/psu_en.png" height="52px" width="170px" /></li>     
@@ -1027,7 +1039,7 @@ hr {
   <div class="row" style="background-color:white;">
 		
 	<!--slide-->
-  <div id="caroussel" style="width:100%;">
+  <div id="caroussel">
       <div class="img-caroussel active" data-img="1" style="background-image: url(./banner/slide6.png)"></div>
       <div class="img-caroussel" data-img="2" style="background-image: url(./banner/slide4.png)"></div>
       <div class="img-caroussel" data-img="3" style="background-image: url(./banner/slide2.png)"></div>
@@ -1107,7 +1119,7 @@ hr {
     </div>
 
 
-    <div class="row" style="background-color:#f4f4f2;min-height:300px;padding:2em;">
+    <div class="row" style="background-color:#f4f4f2;min-height:300px;padding:1em;">
     
     <h2>ข่าวสาร</h2> 
     <span style="margin:10px;color:#959596;"><b>ข่าวเด่น</b></span>  <span style="margin:10px;color:#959596;"><b>ข่าววิจัยและนวัตกรรม</b></span>
