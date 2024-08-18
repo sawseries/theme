@@ -308,8 +308,7 @@ function openCity(evt, cityName) {
 body{
 
     font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
-    width: 100%;
-    height: 100%;
+
 }
 
 @font-face {
@@ -1080,74 +1079,17 @@ hr {
     </div>
 </div>
 
-
-
-<div class="container-fluid" style="min-height:500px;">
-  
-   
+<div class="container-fluid" style="min-height:350px;">
+  <div class="row"></div>
 </div>
-<!--slide-->
-    
 
-    <div class="row" style="background-color:white;">
-    <center>
-    <div class="fade-in-text">
-      <img src="./image/pro1.png" width="100%" style="text-align:center;" />
-    </div>
-    </center>
-    </div>
-
-
-    <div class="row" style="background-color:#fff;">
-
-    <div class="container-fluid">
-    <div class="row">
-    <div class="col col-md-5 col-sm-12" style="margin:20px;background-color:#003c71;min-height:450px;">
-      111111
-    </div>  
-    <div class="col col-md-6 col-sm-12" style="margin:20px;">
-      <div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'London')">สมัครงาน</button>
-      <button class="tablinks" onclick="openCity(event, 'Paris')">ประชาสัมพันธ์</button>
-      <button class="tablinks" onclick="openCity(event, 'Tokyo')">จัดซื้อจัดจ้าง</button>
-      </div>
-
-      <div id="London" class="tabcontent">
-      <h3>London</h3>
-      <p>London is the capital city of England.</p>
-      </div>
-
-      <div id="Paris" class="tabcontent">
-      <h3>Paris</h3>
-      <p>Paris is the capital of France.</p> 
-      </div>
-
-      <div id="Tokyo" class="tabcontent">
-      <h3>Tokyo</h3>
-      <p>Tokyo is the capital of Japan.</p>
-      </div>
-
-    </div>
-    </div>
-    </div>
-  </div>
-
-    <div class="row" style="background-color:white;">
-    <center>
-    <div class="fade-in-text">
-      <img src="./image/pro1.png" width="100%" style="text-align:center;" />
-    </div>
-    </center>
-    </div>
-
-
-    <div class="row" style="background-color:#f4f4f2;min-height:300px;padding:1em;">
-    
-    <h2>ข่าวสาร</h2> 
+<div class="container-fluid" style="">
+  <div class="row" style="background-color:white;text-align:center;">
+  <h2>ข่าวสาร</h2> 
     <span style="margin:10px;color:#959596;"><b>ข่าวเด่น</b></span>  <span style="margin:10px;color:#959596;"><b>ข่าววิจัยและนวัตกรรม</b></span>
-    
     <br> <br> 
-
+  </div>
+  <div class="row" style="">
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <!--box1-->  
     <div class="box">
@@ -1163,117 +1105,70 @@ hr {
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
         <?php for($i=1;$i<=3;$i++){ ?>
-
           <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
-  <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
-</div>
-       
+          <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
+          <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
+          </div>
         <?php } ?>
-      </div>
+    </div>
     </div>
     <!--box3-->
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
     <?php for($i=1;$i<=3;$i++){ ?>
-
-
-<div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div> 
-  <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
-</div>
-
-
-
-<?php } ?>
-      </div>
+    <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
+      <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div> 
+      <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
+    </div>
+    <?php } ?>
+    </div>
     </div>
     <!--box4-->
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
     <?php for($i=1;$i<=6;$i++){ ?>
-
     <div id="pic2" style="width:100%;">
       <div style="font-size:10px;">
       ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ สาข...
       </div>
     </div>
     <hr>
-<?php } ?>
-      </div>
-    </div>
-    
-    <!--<center>
-    <div class="fade-in-text">
-      <img src="./image/activity1.png" width="90%" style="text-align:center;" />
-    </div>
-    </center>-->
-   
-    </div>
+    <?php } ?>
+  </div>
 </div>
 
-<!--<div class="container">
-  <div class="row" style="background-color:white;">
 
-<br><br><br><br> 
-   
-  <div class="fade-in-text">
-    <p>Fade-in Text</p>
-  </div>-->
-  <!--endcon -->
+<div class="container-fluid">
+<div class="row">
+    <div class="col col-md-5 col-sm-12" style="margin:20px;background-color:#003c71;min-height:450px;">
+      111111
+    </div>  
+    <div class="col col-md-6 col-sm-12" style="margin:20px;">
+      <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')">สมัครงาน</button>
+      <button class="tablinks" onclick="openCity(event, 'Paris')">ประชาสัมพันธ์</button>
+      <button class="tablinks" onclick="openCity(event, 'Tokyo')">จัดซื้อจัดจ้าง</button>
+      </div>
+      <div id="London" class="tabcontent">
+      <h3>London</h3>
+      <p>London is the capital city of England.</p>
+      </div>
 
+      <div id="Paris" class="tabcontent">
+      <h3>Paris</h3>
+      <p>Paris is the capital of France.</p> 
+      </div>
 
-  <div class="container-fluid">
-  <div class="row" style="background-color:white;min-height:400px;">
-    </div>
-  </div>
-
- <!--
-  <div class="container-fluid">
-  <div class="row" style="background-color:white;">
-		
-		<main style="background-color:#FFF;">
-			<div class="content content--fixed">
-
-				<nav class="pagination">
-					<a id="item_1"  class="pagination__item">#1</a>
-					<a id="item_2"  class="pagination__item">#2</a>
-					<a id="item_3"  class="pagination__item">#3</a>
-					<a id="item_4"  class="pagination__item">#4</a>
-					<a id="item_5"  class="pagination__item">#5</a>  
-				</nav>
-			</div>
-			<div class="slides" style="background-color:#FFF;">
-				<div class="slide">
-					<div class="slide__img" style="background-image: url('./image/slide1.png');"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(https://static.ybox.vn/2022/5/3/1653434516320-Thi%E1%BA%BFt%20k%E1%BA%BF%20ch%C6%B0a%20c%C3%B3%20t%C3%AAn%20(23).png);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/8.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/9.jpg);"></div>
-				</div>
-				<div class="slide">
-					<div class="slide__img" style="background-image: url(./slicerevealer/img/6.jpg);"></div>
-				</div>
-			</div>
-		</main>
-    </div>
-</div> -->
+      <div id="Tokyo" class="tabcontent">
+      <h3>Tokyo</h3>
+      <p>Tokyo is the capital of Japan.</p>
+      </div>
+</div>
+</div>
 
 
-<!--#2c4988 -->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script src="./slicerevealer/js/imagesloaded.pkgd.min.js"></script>
-		<script src="./slicerevealer/js/anime.min.js"></script>
-		<script src="./slicerevealer/js/uncover.js"></script>
-		<script src="./slicerevealer/js/demo11.js"></script>
-	</body>
-  <div class="container-fluid top-footer">
+<div class="container-fluid top-footer">
       <!-- footer item 1 -->
       <div class="footer-item">
         <h2 class="footer-title">วัฒนธรรมองค์กร</h2>
@@ -1315,4 +1210,14 @@ hr {
 <div class="container-fluid end-footer" style="background-color:#00305b;color:white;">
       <div class="copyright">© 2021 Copyright: Prince of Songkla University, All right reserved</b></div>
 </div>
+
+<!--#2c4988 -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="./slicerevealer/js/imagesloaded.pkgd.min.js"></script>
+		<script src="./slicerevealer/js/anime.min.js"></script>
+		<script src="./slicerevealer/js/uncover.js"></script>
+		<script src="./slicerevealer/js/demo11.js"></script>
+	</body>
+  
 </html>
