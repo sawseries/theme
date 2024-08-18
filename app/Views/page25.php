@@ -1148,8 +1148,8 @@ hr {
     
     <br> <br> 
 
+     <!--box1-->  
     <div class="new-cols col col-md-3 col-sm-12" style="">
-    <!--box1-->  
     <div class="box">
         <div id="pic1">
           <div><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid" width="100%"></div>
@@ -1162,14 +1162,12 @@ hr {
     <!--box2-->
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
-        <?php for($i=1;$i<=3;$i++){ ?>
-
-          <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-  <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
-  <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
-</div>
-       
-        <?php } ?>
+    <?php for($i=1;$i<=3;$i++){ ?>
+      <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
+      <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
+      <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
+    </div>       
+    <?php } ?>
       </div>
     </div>
     <!--box3-->

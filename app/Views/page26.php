@@ -1084,14 +1084,14 @@ hr {
 </div>
 
 <div class="container-fluid" style="">
-  <div class="row" style="background-color:white;text-align:center;">
+  <div class="row" style="background-color:white;text-align:center;background-color:#f1f1f1;">
   <h2>ข่าวสาร</h2> 
     <span style="margin:10px;color:#959596;"><b>ข่าวเด่น</b></span>  <span style="margin:10px;color:#959596;"><b>ข่าววิจัยและนวัตกรรม</b></span>
     <br> <br> 
   </div>
-  <div class="row" style="">
-    <div class="new-cols col col-md-3 col-sm-12" style="">
-    <!--box1-->  
+  
+  <!--box1-->
+  <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
         <div id="pic1">
           <div><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid" width="100%"></div>
@@ -1101,28 +1101,32 @@ hr {
         </div>
       </div>
     </div>
-    <!--box2-->
-    <div class="new-cols col col-md-3 col-sm-12" style="">
+
+  <!--box2-->
+  <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
-        <?php for($i=1;$i<=3;$i++){ ?>
-          <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-          <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
-          <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
-          </div>
-        <?php } ?>
+    <?php for($i=1;$i<=3;$i++){ ?>
+      <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
+      <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div>
+      <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
+    </div>       
+    <?php } ?>
+      </div>
     </div>
-    </div>
+
     <!--box3-->
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
     <?php for($i=1;$i<=3;$i++){ ?>
     <div class="flex-container" style="width:100%;height:100px;border-bottom:1px solid #ccc;margin-bottom:5px;">
-      <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div> 
-      <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
+    <div style="width:50%;"><img src="https://www.psu.ac.th/admin/assets/images/news/1870_th.png" class="img-fluid"></div> 
+    <div style="width:50%;">ทีมนักวิจัย มหาวิทยาลัยสงขลานครินทร์ โดย ดร. กิตติคุณ ทองพูล สาขาวิชาวิศวกรรมไฟฟ้า คณะวิศวกรรมศาสตร์ และ พ.ต.อ. สิทธิศักดิ์ จันทรสว่าง ..</div>
     </div>
     <?php } ?>
     </div>
     </div>
+
+
     <!--box4-->
     <div class="new-cols col col-md-3 col-sm-12" style="">
     <div class="box">
@@ -1134,12 +1138,19 @@ hr {
     </div>
     <hr>
     <?php } ?>
-  </div>
+    </div>
+    </div>
+
+    <!--endbox4-->
 </div>
 
-
 <div class="container-fluid">
-<div class="row">
+
+<div class="row" style="background-color:#f1f1f1;text-align:center;padding-top:40px;">
+    <h2>ประชาสัมพันธ์</h2><br><br>
+</div>
+<div class="row" style="background-color:white;text-align:center;padding-top:40px;">
+
     <div class="col col-md-5 col-sm-12" style="margin:20px;background-color:#003c71;min-height:450px;">
       111111
     </div>  
@@ -1149,6 +1160,7 @@ hr {
       <button class="tablinks" onclick="openCity(event, 'Paris')">ประชาสัมพันธ์</button>
       <button class="tablinks" onclick="openCity(event, 'Tokyo')">จัดซื้อจัดจ้าง</button>
       </div>
+
       <div id="London" class="tabcontent">
       <h3>London</h3>
       <p>London is the capital city of England.</p>
@@ -1163,12 +1175,14 @@ hr {
       <h3>Tokyo</h3>
       <p>Tokyo is the capital of Japan.</p>
       </div>
+
+    </div>
+
+    </div> <!--endrow-->
+
 </div>
-</div>
 
-
-
-<div class="container-fluid top-footer">
+<div class="container-fluid top-footer" style="">
       <!-- footer item 1 -->
       <div class="footer-item">
         <h2 class="footer-title">วัฒนธรรมองค์กร</h2>
