@@ -547,7 +547,6 @@ background-color:#e9eef4;
 }
 .footer-items{
   cursor: pointer;
-
   font-size:10pt;
   padding: 0.2rem 0;
   font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
@@ -571,6 +570,26 @@ background-color:#e9eef4;
    
 @media (max-width: 920px) {
 
+
+  .footer-items{
+    width:100%;
+    cursor: pointer;
+    float:left;
+    font-size:10pt;
+    padding: 0.2rem 0;
+    position:relative;
+     font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
+  }
+
+  .top-footer {
+    background-color:#003c71;color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 8rem;
+    padding-top: 2rem;
+    font-family: "PSU-Stidti-Regular","PSU-Stidti-Light","PSU-Stidti-Bold",sans-serif;
+  }
 
   #caroussel{
     width: 100%;
