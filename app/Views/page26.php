@@ -600,22 +600,20 @@ background-color:#e9eef4;
     -ms-user-select: none; 
     user-select: none; 
     resize: both;
-    background-color:red;
+    background-color:#eef6fb;
 }
 
 
 .img-caroussel{
     background-repeat: no-repeat;
     background-size:contain;
-    background-position: center;
-    height: inherit;
+    background-position: center;    
     transition: 0.6s ease;
     opacity: 0;
     position: absolute;
-    width:80%;
+    width:100%;
     resize: both;
-    margin:0;
- 
+    height:inherit;
 }
 
 
@@ -919,7 +917,7 @@ hr {
 
 .img-caroussel{
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:contain;
     background-position: center;
     height: inherit;
     transition: 0.6s ease;
@@ -1081,7 +1079,7 @@ hr {
 	<!--slide-->
   <div id="caroussel">
       <div class="img-caroussel active" data-img="1" style="background-image: url(./banner/slide6.png)"></div>
-      <div class="img-caroussel" data-img="2" style="background-image: url(./banner/slide4.png)"></div>
+      <div class="img-caroussel" data-img="2" style="background-image: url(./banner/banner-pcu-66.png)"></div>
       <div class="img-caroussel" data-img="3" style="background-image: url(./banner/slide2.png)"></div>
       <div class="img-caroussel" data-img="4" style="background-image: url(./banner/slide5.png)"></div>
 
